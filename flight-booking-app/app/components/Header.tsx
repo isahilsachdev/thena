@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppContext } from '../AppContext';
 import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
-  const { setToken } = useAppContext();
+  const { setToken, token } = useAppContext();
   const router = useRouter();
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    if (!token && currentPath !== '/login' && currentPath !== '/signup') {
+      handleLogout();
+    }
+  }, [token]);
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Remove token from local storage

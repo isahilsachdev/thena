@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { airportsList } from "./utils";
 import SeatSelection from "./components/SeatSelection";
 import Confirmation from "./components/Confirmation";
@@ -9,6 +9,8 @@ import Payment from "./components/Payment"; // Import Payment component
 import FlightList from "./components/FlightList";
 import { fetchFlights } from "./api";
 import Header from "./components/Header";
+import { useAppContext } from "./AppContext";
+import { useRouter } from "next/navigation";
 
 interface SelectedSeats {
   outbound: string[];
@@ -30,6 +32,15 @@ interface SelectedFlights {
 }
 
 export default function Home() {
+  const { token } = useAppContext(); // Access token from context
+  const router = useRouter();
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    if (!token && currentPath !== '/login' && currentPath !== '/signup') {
+      router.push('/login'); // Redirect to login page
+    }
+  }, [router, token]);
   // State for different views
   const [currentView, setCurrentView] = useState("search"); // search, flights, seatSelection, passengerDetails, confirmation
 
@@ -105,8 +116,6 @@ export default function Home() {
         searchData.returnDate
       ) : [];
 
-
-    
     setAvailableFlights({
       outbound: outboundFlights,
       return: returnFlights

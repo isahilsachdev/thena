@@ -6,6 +6,7 @@ const api = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add token to headers
   },
 });
 
@@ -68,7 +69,7 @@ export const registerUser = async (userData: UserData) => {
 };
 
 export const fetchUserProfile = async () => {
-  const response = await api.get('/user/profile');
+  const response = await api.get('/users/profile');
   return response.data;
 };
 
