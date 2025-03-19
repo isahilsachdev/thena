@@ -1,10 +1,36 @@
 import React, { useState } from 'react';
-import { getPayment, processPayment } from '../api';
+import { processPayment } from '../api';
+
+type Flight = {
+  airline: string;
+  flightNumber: string;
+  departureTime: string;
+  arrivalTime: string;
+  duration: string;
+  price: number;
+};
+
+type SelectedFlights = {
+  outbound: Flight;
+  return?: Flight;
+};
+
+type SearchData = {
+  origin: string;
+  destination: string;
+  departureDate: string;
+  returnDate?: string;
+  cabinClass: string;
+  passengers: number;
+  isReturn: boolean;
+};
 
 type PaymentProps = {
   setPaymentDetails: (details: unknown) => void;
   setCurrentView: (view: string) => void;
   calculateTotalPrice: () => number;
+  searchData: SearchData;
+  selectedFlights: SelectedFlights;
 };
 
 const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPaymentDetails, setCurrentView, calculateTotalPrice }) => {
@@ -52,7 +78,6 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
     try {
       setPaymentDetails(paymentDetails);
       await processPayment(paymentDetails);
-      await getPayment();
       setCurrentView('confirmation');
     } catch {
       setError('Payment failed. Please try again.');
