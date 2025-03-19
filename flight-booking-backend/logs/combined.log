@@ -84,3 +84,55 @@
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-18T19:45:04.218Z"}
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-18T19:46:55.448Z"}
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-18T19:47:18.157Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:05:25.768Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:05:30.627Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:64:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:05:30.627Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:06:14.724Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:64:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:06:14.724Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:07:05.213Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:07:10.438Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:07:12.831Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:11:41.628Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:11:42.048Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:14:51.340Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/register - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:18.655Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at register (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:40:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:18.656Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/register - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:28.729Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at register (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:40:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:28.729Z"}
+{"level":"error","message":"400 - Email address \"a@b.cd\" is invalid - /api/auth/register - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:38.217Z"}
+{"level":"error","message":"Error: Email address \"a@b.cd\" is invalid\n    at register (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:30:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:38.218Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/register - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:45.015Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at register (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:40:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:45.016Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:50.932Z"}
+{"level":"error","message":"400 - For security purposes, you can only request this after 45 seconds. - /api/auth/register - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:56.404Z"}
+{"level":"error","message":"Error: For security purposes, you can only request this after 45 seconds.\n    at register (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:30:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:16:56.404Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:21:36.453Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:21:53.427Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:21:58.893Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:22:09.054Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:22:50.261Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:22:57.827Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:22:59.658Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:23:13.244Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:65:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:23:13.244Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:23:48.610Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:25:47.523Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:65:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:25:47.523Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:25:54.041Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:25:56.327Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:65:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:25:56.327Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:26:40.100Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:26:47.511Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:65:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:26:47.512Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:37:38.862Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:37:48.752Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:65:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:37:48.752Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:38:36.311Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:38:41.082Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:38:44.415Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:66:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:38:44.415Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:39:16.946Z"}
+{"level":"error","message":"401 - Email not confirmed - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-19T16:39:21.320Z"}
+{"level":"error","message":"Error: Email not confirmed\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:66:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-19T16:39:21.320Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:41:14.535Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-19T16:43:08.716Z"}

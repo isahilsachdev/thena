@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { registerUser } from "../api";
-import { useRouter } from "next/navigation";
+import { useAppContext } from "../AppContext"; // Import useAppContext
+import { useRouter } from "next/navigation"; // Import useRouter
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -13,7 +14,8 @@ export default function Signup() {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const router = useRouter();
+  const router = useRouter(); // Initialize router
+  const { setToken } = useAppContext(); // Get setToken from context
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,11 +24,13 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      console.log('formData', formData)
-      await registerUser(formData);
+      const response = await registerUser(formData);
+      const { session } = response.data; // Get session token from response
+      localStorage.setItem('token', session); // Save token in local storage
+      setToken(session); // Update context with token
       setSuccess("Signup successful! Please log in.");
-      router.push('/')
       setError("");
+      router.push('/'); // Redirect to homepage
     } catch (err) {
       setError("Signup failed. Please try again.");
       console.error(err);

@@ -33,7 +33,8 @@ const register = async (req, res, next) => {
     res.status(201).json({
       status: 'success',
       data: {
-        user: data.user
+        user: data.user,
+        session: data.user.id, // Include session token in response
       }
     });
   } catch (error) {
@@ -59,7 +60,11 @@ const login = async (req, res, next) => {
       password
     });
 
+    console.log(email, password, 'first', data, error);
     if (error) {
+      if (error.code === 'email_not_confirmed') {
+        return next(new AppError('Email not confirmed. Please check your email for the confirmation link.', 401));
+      }
       return next(new AppError(error.message, 401));
     }
 
@@ -67,7 +72,7 @@ const login = async (req, res, next) => {
       status: 'success',
       data: {
         user: data.user,
-        session: data.session
+        session: data.user.id // Include session token in responsession: data.session
       }
     });
   } catch (error) {

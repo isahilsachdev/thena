@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useAppContext } from "../AppContext"; // Import useAppContext
+import { useRouter } from "next/navigation"; // Import useRouter
 import { loginUser } from "../api";
 
 export default function Login() {
@@ -16,12 +18,20 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const { setToken } = useAppContext(); // Get setToken from context
+  const router = useRouter(); // Initialize router
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await loginUser(formData);
-      setSuccess("Login successful!");
-      setError("");
+    const response = await loginUser(formData);
+    const { session } = response.data; // Get session token from response
+    localStorage.setItem('token', session); // Save token in local storage
+    setToken(session); // Update context with token
+    setSuccess("Login successful!");
+    setError("");
+    router.push('/'); // Redirect to homepage
+
     } catch (err) {
       setError("Login failed. Please try again.");
       console.error(err);
