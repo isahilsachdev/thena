@@ -1,3 +1,5 @@
+import React from 'react';
+
 type Passenger = {
   name: string;
   email: string;

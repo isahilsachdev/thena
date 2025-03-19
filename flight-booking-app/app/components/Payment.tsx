@@ -34,7 +34,6 @@ type PaymentProps = {
 };
 
 const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPaymentDetails, setCurrentView, calculateTotalPrice }) => {
-  console.log('selectedFlights', searchData)
   const [cardType, setCardType] = useState<'credit' | 'debit'>('credit');
   const [cardNumber, setCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
