@@ -8,6 +8,7 @@ import PassengerDetails from "./components/PassengerDetails";
 import Payment from "./components/Payment"; // Import Payment component
 import FlightList from "./components/FlightList";
 import { fetchFlights } from "./api";
+import Header from "./components/Header";
 
 interface SelectedSeats {
   outbound: string[];
@@ -190,207 +191,208 @@ export default function Home() {
   };
   
   return (
-    <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-gray-900 text-white">
-      <h1 className="text-3xl font-bold mb-4">Flight Booking</h1>
-      
-      {/* Search Form */}
-      {currentView === "search" && (
-        <form onSubmit={handleSearch} className="flex flex-col gap-4 w-full max-w-lg bg-gray-800 p-6 rounded-lg relative">
-          <h2 className="text-xl font-semibold mb-2">Search Flights</h2>
-          
-          {/* Flight Type Selection */}
-          <div className="flex gap-4 mb-2">
-            <label className="flex items-center">
+    <>
+      <Header />
+      <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-gray-900 text-white">
+        {/* Search Form */}
+        {currentView === "search" && (
+          <form onSubmit={handleSearch} className="flex flex-col gap-4 w-full max-w-lg bg-gray-800 p-6 rounded-lg relative">
+            <h2 className="text-xl font-semibold mb-2">Search Flights</h2>
+            
+            {/* Flight Type Selection */}
+            <div className="flex gap-4 mb-2">
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  checked={!searchData.isReturn}
+                  onChange={() => setSearchData({ ...searchData, isReturn: false, returnDate: "" })}
+                  className="mr-2"
+                />
+                One Way
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
+                  checked={searchData.isReturn}
+                  onChange={() => setSearchData({ ...searchData, isReturn: true })}
+                  className="mr-2"
+                />
+                Round Trip
+              </label>
+            </div>
+            
+            {/* Origin Dropdown */}
+            <div className="relative">
+              <label className="block text-sm mb-1">From</label>
               <input
-                type="radio"
-                checked={!searchData.isReturn}
-                onChange={() => setSearchData({ ...searchData, isReturn: false, returnDate: "" })}
-                className="mr-2"
+                type="text"
+                placeholder="Origin"
+                className="text-white p-2 rounded w-full text-black"
+                required
+                value={searchData.origin}
+                onChange={(e) => {
+                  setSearchData({ ...searchData, origin: e.target.value });
+                  setOriginDropdown(true);
+                }}
+                onFocus={() => setOriginDropdown(true)}
+                onBlur={() => setTimeout(() => setOriginDropdown(false), 200)}
               />
-              One Way
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                checked={searchData.isReturn}
-                onChange={() => setSearchData({ ...searchData, isReturn: true })}
-                className="mr-2"
-              />
-              Round Trip
-            </label>
-          </div>
-          
-          {/* Origin Dropdown */}
-          <div className="relative">
-            <label className="block text-sm mb-1">From</label>
-            <input
-              type="text"
-              placeholder="Origin"
-              className="text-white p-2 rounded w-full text-black"
-              required
-              value={searchData.origin}
-              onChange={(e) => {
-                setSearchData({ ...searchData, origin: e.target.value });
-                setOriginDropdown(true);
-              }}
-              onFocus={() => setOriginDropdown(true)}
-              onBlur={() => setTimeout(() => setOriginDropdown(false), 200)}
-            />
-            {originDropdown && searchData.origin && (
-              <ul className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-y-auto z-10">
-                {filterAirports(searchData.origin).length > 0 ? (
-                  filterAirports(searchData.origin).map((airport) => (
-                    <li
-                      key={airport.IATA_code}
-                      onClick={() => {
-                        setSearchData({ ...searchData, origin: `${airport.airport_name} (${airport.IATA_code})` });
-                        setOriginDropdown(false);
-                      }}
-                      className="text-black p-2 cursor-pointer hover:bg-gray-200"
-                    >
-                      {airport.airport_name} ({airport.IATA_code}) - {airport.city_name}
-                    </li>
-                  ))
-                ) : (
-                  <li className="p-2 text-gray-500">No results found</li>
-                )}
-              </ul>
-            )}
-          </div>
+              {originDropdown && searchData.origin && (
+                <ul className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-y-auto z-10">
+                  {filterAirports(searchData.origin).length > 0 ? (
+                    filterAirports(searchData.origin).map((airport) => (
+                      <li
+                        key={airport.IATA_code}
+                        onClick={() => {
+                          setSearchData({ ...searchData, origin: `${airport.airport_name} (${airport.IATA_code})` });
+                          setOriginDropdown(false);
+                        }}
+                        className="text-black p-2 cursor-pointer hover:bg-gray-200"
+                      >
+                        {airport.airport_name} ({airport.IATA_code}) - {airport.city_name}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="p-2 text-gray-500">No results found</li>
+                  )}
+                </ul>
+              )}
+            </div>
 
-          {/* Destination Dropdown */}
-          <div className="relative">
-            <label className="block text-sm mb-1">To</label>
-            <input
-              type="text"
-              placeholder="Destination"
-              className="text-white p-2 rounded w-full text-black"
-              required
-              value={searchData.destination}
-              onChange={(e) => {
-                setSearchData({ ...searchData, destination: e.target.value });
-                setDestinationDropdown(true);
-              }}
-              onFocus={() => setDestinationDropdown(true)}
-              onBlur={() => setTimeout(() => setDestinationDropdown(false), 200)}
-            />
-            {destinationDropdown && searchData.destination && (
-              <ul className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-y-auto z-10">
-                {filterAirports(searchData.destination).length > 0 ? (
-                  filterAirports(searchData.destination).map((airport) => (
-                    <li
-                      key={airport.IATA_code}
-                      onClick={() => {
-                        setSearchData({ ...searchData, destination: `${airport.airport_name} (${airport.IATA_code})` });
-                        setDestinationDropdown(false);
-                      }}
-                      className="text-black p-2 cursor-pointer hover:bg-gray-200"
-                    >
-                      {airport.airport_name} ({airport.IATA_code}) - {airport.city_name}
-                    </li>
-                  ))
-                ) : (
-                  <li className="p-2 text-gray-500">No results found</li>
-                )}
-              </ul>
-            )}
-          </div>
-          
-          {/* Date Selection */}
-          <div>
-            <label className="block text-sm mb-1">Departure Date</label>
-            <input 
-              type="date" 
-              className="text-white p-2 rounded w-full text-black" 
-              required 
-              value={searchData.departureDate} 
-              onChange={(e) => setSearchData({ ...searchData, departureDate: e.target.value })} 
-              min={new Date().toISOString().split('T')[0]}
-            />
-          </div>
-          
-          {searchData.isReturn && (
+            {/* Destination Dropdown */}
+            <div className="relative">
+              <label className="block text-sm mb-1">To</label>
+              <input
+                type="text"
+                placeholder="Destination"
+                className="text-white p-2 rounded w-full text-black"
+                required
+                value={searchData.destination}
+                onChange={(e) => {
+                  setSearchData({ ...searchData, destination: e.target.value });
+                  setDestinationDropdown(true);
+                }}
+                onFocus={() => setDestinationDropdown(true)}
+                onBlur={() => setTimeout(() => setDestinationDropdown(false), 200)}
+              />
+              {destinationDropdown && searchData.destination && (
+                <ul className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-md max-h-60 overflow-y-auto z-10">
+                  {filterAirports(searchData.destination).length > 0 ? (
+                    filterAirports(searchData.destination).map((airport) => (
+                      <li
+                        key={airport.IATA_code}
+                        onClick={() => {
+                          setSearchData({ ...searchData, destination: `${airport.airport_name} (${airport.IATA_code})` });
+                          setDestinationDropdown(false);
+                        }}
+                        className="text-black p-2 cursor-pointer hover:bg-gray-200"
+                      >
+                        {airport.airport_name} ({airport.IATA_code}) - {airport.city_name}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="p-2 text-gray-500">No results found</li>
+                  )}
+                </ul>
+              )}
+            </div>
+            
+            {/* Date Selection */}
             <div>
-              <label className="block text-sm mb-1">Return Date</label>
+              <label className="block text-sm mb-1">Departure Date</label>
               <input 
                 type="date" 
                 className="text-white p-2 rounded w-full text-black" 
                 required 
-                value={searchData.returnDate} 
-                onChange={(e) => setSearchData({ ...searchData, returnDate: e.target.value })} 
-                min={searchData.departureDate || new Date().toISOString().split('T')[0]}
+                value={searchData.departureDate} 
+                onChange={(e) => setSearchData({ ...searchData, departureDate: e.target.value })} 
+                min={new Date().toISOString().split('T')[0]}
               />
             </div>
-          )}
-          
-          {/* Passengers */}
-          <div>
-            <label className="block text-sm mb-1">Passengers</label>
-            <input 
-              type="number" 
-              min="1" 
-              max="9" 
-              className="text-white p-2 rounded w-full text-black" 
-              value={searchData.passengers} 
-              onChange={(e) => {
-                const numPassengers = parseInt(e.target.value) || 1;
-                console.log('first', numPassengers)
-                setSearchData({ ...searchData, passengers: numPassengers });
+            
+            {searchData.isReturn && (
+              <div>
+                <label className="block text-sm mb-1">Return Date</label>
+                <input 
+                  type="date" 
+                  className="text-white p-2 rounded w-full text-black" 
+                  required 
+                  value={searchData.returnDate} 
+                  onChange={(e) => setSearchData({ ...searchData, returnDate: e.target.value })} 
+                  min={searchData.departureDate || new Date().toISOString().split('T')[0]}
+                />
+              </div>
+            )}
+            
+            {/* Passengers */}
+            <div>
+              <label className="block text-sm mb-1">Passengers</label>
+              <input 
+                type="number" 
+                min="1" 
+                max="9" 
+                className="text-white p-2 rounded w-full text-black" 
+                value={searchData.passengers} 
+                onChange={(e) => {
+                  const numPassengers = parseInt(e.target.value) || 1;
+                  console.log('first', numPassengers)
+                  setSearchData({ ...searchData, passengers: numPassengers });
 
-                const updatedPassengers = Array.from({ length: numPassengers }, () => ({ name: "", email: "" }));
-                console.log('first', updatedPassengers)
-                setPassengers(updatedPassengers);
-              }}
-            />
-          </div>
-          
-          {/* Cabin Class */}
-          <div>
-            <label className="block text-sm mb-1">Cabin Class</label>
-            <select 
-              className="text-white p-2 rounded w-full text-black" 
-              value={searchData.cabinClass} 
-              onChange={(e) => setSearchData({ ...searchData, cabinClass: e.target.value })}
-            >
-              <option>Economy</option>
-              <option>Premium Economy</option>
-              <option>Business</option>
-              <option>First</option>
-            </select>
-          </div>
-          
-          <button type="submit" className="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition">Search Flights</button>
-        </form>
-      )}
+                  const updatedPassengers = Array.from({ length: numPassengers }, () => ({ name: "", email: "" }));
+                  console.log('first', updatedPassengers)
+                  setPassengers(updatedPassengers);
+                }}
+              />
+            </div>
+            
+            {/* Cabin Class */}
+            <div>
+              <label className="block text-sm mb-1">Cabin Class</label>
+              <select 
+                className="text-white p-2 rounded w-full text-black" 
+                value={searchData.cabinClass} 
+                onChange={(e) => setSearchData({ ...searchData, cabinClass: e.target.value })}
+              >
+                <option>Economy</option>
+                <option>Premium Economy</option>
+                <option>Business</option>
+                <option>First</option>
+              </select>
+            </div>
+            
+            <button type="submit" className="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition">Search Flights</button>
+          </form>
+        )}
 
-      {/* Flight List */}
-      {currentView === "flights" && (
-        <FlightList availableFlights={availableFlights} selectedFlights={selectedFlights} handleFlightSelection={handleFlightSelection} searchData={searchData} />
-      )}
+        {/* Flight List */}
+        {currentView === "flights" && (
+          <FlightList availableFlights={availableFlights} selectedFlights={selectedFlights} handleFlightSelection={handleFlightSelection} searchData={searchData} />
+        )}
 
-      {/* Seat Selection */}
-      {currentView === "seatSelection" && (
-        <SeatSelection
-          selectedFlights={selectedFlights} 
-          selectedSeats={selectedSeats} 
-          setSelectedSeats={setSelectedSeats} 
-          setCurrentView={setCurrentView} 
-          searchData={searchData}
-        />
-      )}
-      
-      {/* Passenger Details */}
-      {currentView === "passengerDetails" && (
-        <PassengerDetails passengers={passengers} handlePassengerChange={handlePassengerChange} selectedSeats={selectedSeats} selectedFlights={selectedFlights} setCurrentView={setCurrentView} handleBookingConfirmation={handleBookingConfirmation} calculateTotalPrice={calculateTotalPrice} />
-      )}
-      
-      {/* Render Payment component */}
-      {currentView === "payments" && <Payment searchData={searchData} selectedFlights={selectedFlights} setPaymentDetails={setPaymentDetails} setCurrentView={setCurrentView} calculateTotalPrice={calculateTotalPrice} />}
+        {/* Seat Selection */}
+        {currentView === "seatSelection" && (
+          <SeatSelection
+            selectedFlights={selectedFlights} 
+            selectedSeats={selectedSeats} 
+            setSelectedSeats={setSelectedSeats} 
+            setCurrentView={setCurrentView} 
+            searchData={searchData}
+          />
+        )}
+        
+        {/* Passenger Details */}
+        {currentView === "passengerDetails" && (
+          <PassengerDetails passengers={passengers} handlePassengerChange={handlePassengerChange} selectedSeats={selectedSeats} selectedFlights={selectedFlights} setCurrentView={setCurrentView} handleBookingConfirmation={handleBookingConfirmation} calculateTotalPrice={calculateTotalPrice} />
+        )}
+        
+        {/* Render Payment component */}
+        {currentView === "payments" && <Payment searchData={searchData} selectedFlights={selectedFlights} setPaymentDetails={setPaymentDetails} setCurrentView={setCurrentView} calculateTotalPrice={calculateTotalPrice} />}
 
-      {/* Confirmation Page */}
-      {currentView === "confirmation" && (
-        <Confirmation selectedFlights={selectedFlights} searchData={searchData} passengers={passengers} selectedSeats={selectedSeats} paymentDetails={paymentDetails} calculateTotalPrice={calculateTotalPrice} handleNewSearch={handleNewSearch} />
-      )}
-    </div>
+        {/* Confirmation Page */}
+        {currentView === "confirmation" && (
+          <Confirmation selectedFlights={selectedFlights} searchData={searchData} passengers={passengers} selectedSeats={selectedSeats} paymentDetails={paymentDetails} calculateTotalPrice={calculateTotalPrice} handleNewSearch={handleNewSearch} />
+        )}
+      </div>
+    </>
   );
 }
