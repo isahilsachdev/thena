@@ -10,25 +10,26 @@ const api = axios.create({
   },
 });
 
+
 // Add an Axios response interceptor
-api.interceptors.response.use(
-  (response) => {
-    // If the response is successful, just return the response
-    return response;
-  },
-  (error) => {
-    // Check if the error response status is 401 (Unauthorized)
-    if (error.response && error.response.status === 401) {
-      console.error('Unauthorized access - logging out user');
-      // Clear the token from localStorage
-      localStorage.removeItem('token');
-      // Redirect the user to the login page
-      window.location.href = '/login';
-    }
-    // Reject the promise with the error
-    return Promise.reject(error);
-  }
-);
+// api.interceptors.response.use(
+//   (response) => {
+//     // If the response is successful, just return the response
+//     return response;
+//   },
+//   (error) => {
+//     // Check if the error response status is 401 (Unauthorized)
+//     if (error.response && error.response.status === 401) {
+//       console.error('Unauthorized access - logging out user');
+//       // Clear the token from localStorage
+//       localStorage.removeItem('token');
+//       // Redirect the user to the login page
+//       window.location.href = '/login';
+//     }
+//     // Reject the promise with the error
+//     return Promise.reject(error);
+//   }
+// );
 
 // Define types for parameters
 interface Credentials {
@@ -90,6 +91,10 @@ export const registerUser = async (userData: UserData) => {
 export const fetchUserProfile = async () => {
   const response = await api.get('/users/profile');
   return response.data;
+};
+
+export const cancelBooking = async (bookingId: string) => {
+  return await api.delete(`/users/bookings/${bookingId}`);
 };
 
 export default api;

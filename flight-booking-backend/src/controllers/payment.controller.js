@@ -54,8 +54,6 @@ const createPayment = async (req, res, next) => {
       return res.status(500).json({ message: 'Error creating payment', error: paymentError });
     }
 
-    console.log('Payment Created:', paymentData);
-
     // Create bookings for each valid flight ID
     const bookingPromises = validFlightIds.map((id) => {
       return supabase
