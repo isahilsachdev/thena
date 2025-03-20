@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { processPayment } from '../api';
+import { toast } from 'react-toastify';
 
 type Flight = {
   airline: string;
@@ -78,8 +79,9 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
       setPaymentDetails(paymentDetails);
       await processPayment(paymentDetails);
       setCurrentView('confirmation');
-    } catch {
+    } catch (error) {
       setError('Payment failed. Please try again.');
+      toast.error('Payment failed. Please try again.');
     }
   };
 

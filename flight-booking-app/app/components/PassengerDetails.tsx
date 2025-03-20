@@ -80,7 +80,7 @@ const PassengerDetails: React.FC<PassengerDetailsProps> = ({
               <p className="mb-1 text-sm">
                 Assigned Seat (Outbound): <span className="font-bold">{selectedSeats.outbound[index]}</span>
               </p>
-              {selectedFlights.return && (
+              {selectedFlights.return && !!selectedSeats.return?.[index] && (
                 <p className="text-sm">
                   Assigned Seat (Return): <span className="font-bold">{selectedSeats.return?.[index]}</span>
                 </p>
@@ -92,7 +92,7 @@ const PassengerDetails: React.FC<PassengerDetailsProps> = ({
         <div className="mt-4 flex justify-between items-center">
           <button
             type="button"
-            onClick={() => setCurrentView("flights")}
+            onClick={() => setCurrentView("seatSelection")}
             className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 transition"
           >
             Back

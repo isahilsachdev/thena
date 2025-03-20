@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { registerUser } from "../api";
 import { useAppContext } from "../AppContext"; // Import useAppContext
 import { useRouter } from "next/navigation"; // Import useRouter
+import { toast } from "react-toastify";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -12,8 +13,6 @@ export default function Signup() {
     password: "",
   });
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const router = useRouter(); // Initialize router
   const { setToken } = useAppContext(); // Get setToken from context
 
@@ -28,13 +27,11 @@ export default function Signup() {
       const { session } = response.data; // Get session token from response
       localStorage.setItem('token', session); // Save token in local storage
       setToken(session); // Update context with token
-      setSuccess("Signup successful! Please log in.");
-      setError("");
+      toast.success('Signup successful!');
       router.push('/'); // Redirect to homepage
     } catch (err) {
-      setError("Signup failed. Please try again.");
-      console.error(err);
-      setSuccess("");
+      toast.error(err.response.data.message || 'Something went wrong, Please try again!');
+      console.error(err.response.data.message);
     }
   };
 
@@ -75,8 +72,6 @@ export default function Signup() {
             required
           />
         </div>
-        {error && <p className="text-red-500">{error}</p>}
-        {success && <p className="text-green-500">{success}</p>}
         <button type="submit" className="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition">
           Signup
         </button>

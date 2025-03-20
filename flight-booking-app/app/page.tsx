@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 import { airportsList } from "./utils";
 import SeatSelection from "./components/SeatSelection";
 import Confirmation from "./components/Confirmation";
@@ -145,7 +146,8 @@ export default function Home() {
       if (!searchData.isReturn || (updatedSelectedFlights.outbound && updatedSelectedFlights.return)) {
         setCurrentView("seatSelection");
       }
-  
+
+      toast.success('Flight selected successfully!');
       return updatedSelectedFlights;
     });
   };
@@ -164,6 +166,7 @@ export default function Home() {
   const handleBookingConfirmation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setCurrentView("payments");
+    toast.success('Passengar details added successfully!');
   };
   
   // Calculate total price
@@ -191,8 +194,7 @@ export default function Home() {
   // Reset booking and go back to search
   const handleNewSearch = () => {
     setCurrentView("search");
-        setSelectedFlights({ outbound: { airline: '', flightNumber: '', departureTime: '', arrivalTime: '', duration: '', price: 0 }, return: undefined });
-
+    setSelectedFlights({ outbound: { airline: '', flightNumber: '', departureTime: '', arrivalTime: '', duration: '', price: 0 }, return: undefined });
     setSelectedSeats({ outbound: [], return: [] });
     setPassengers([{ name: "", email: "" }]);
   };

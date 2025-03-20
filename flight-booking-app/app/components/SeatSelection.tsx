@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 interface Flight {
   airline: string;
@@ -64,6 +65,7 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
   const handleProceed = () => {
     if (validateSeatSelection()) {
       setCurrentView("passengerDetails");
+      toast.success('Seats selected successfully!');
     }
   };
 
