@@ -10,6 +10,26 @@ const api = axios.create({
   },
 });
 
+// Add an Axios response interceptor
+api.interceptors.response.use(
+  (response) => {
+    // If the response is successful, just return the response
+    return response;
+  },
+  (error) => {
+    // Check if the error response status is 401 (Unauthorized)
+    if (error.response && error.response.status === 401) {
+      console.error('Unauthorized access - logging out user');
+      // Clear the token from localStorage
+      localStorage.removeItem('token');
+      // Redirect the user to the login page
+      window.location.href = '/login';
+    }
+    // Reject the promise with the error
+    return Promise.reject(error);
+  }
+);
+
 // Define types for parameters
 interface Credentials {
   email: string;
@@ -54,7 +74,6 @@ export const fetchFlights = async (
   date: string
 ): Promise<Flight[]> => {
   const response = await api.get('/flights?origin=' + origin + '&destination=' + destination + '&date=' + date);
-  console.log('first1', response)
   return response.data.data.flights;
 };
 

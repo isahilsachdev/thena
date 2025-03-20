@@ -27,7 +27,7 @@ const UserDetails = () => {
   if (error) return <div className="text-center text-red-500">Error: {error}</div>;
 
   return (
-    <div className="max-w-4xl mx-auto mt-10">
+    <div className="max-w-4xl mx-auto">
       {/* User Info Card */}
       <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-2xl font-semibold mb-4">User Information</h2>

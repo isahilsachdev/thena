@@ -124,7 +124,6 @@ export default function Home() {
     setCurrentView("flights");
   };
   
-  console.log('searchData.passengers', searchData.passengers)
   // Handle flight selection
   const handleFlightSelection = (flight: 'string', type: 'string') => {
     setSelectedFlights((prevSelectedFlights: SelectedFlights) => {
@@ -348,7 +347,6 @@ export default function Home() {
                   setSearchData({ ...searchData, passengers: numPassengers });
 
                   const updatedPassengers = Array.from({ length: numPassengers }, () => ({ name: "", email: "" }));
-                  console.log('first', updatedPassengers)
                   setPassengers(updatedPassengers);
                 }}
               />
