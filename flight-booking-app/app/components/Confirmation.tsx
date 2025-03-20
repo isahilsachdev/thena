@@ -65,9 +65,9 @@ const Confirmation: React.FC<ConfirmationProps> = ({
         <p>Thank you for your booking. Your confirmation code is: <span className="font-mono font-bold">{Math.random().toString(36).slice(2, 10).toUpperCase()}</span></p>
       </div>
       
-      <div className="bg-gray-800 p-6 rounded-lg mb-6">
+      <div className="bg-[#2A2C2E] p-6 rounded-lg mb-6">
         <h3 className="text-xl font-semibold mb-4">Payment Details</h3>
-        <div className='bg-gray-700 rounded w-fit p-4'>
+        <div className='border border-[1px] border-gray-500 shadow-lg rounded w-fit p-4'>
           <p>Payment Method: Credit Card</p>
           <p>Card Number: **** **** **** {paymentDetails?.cardNumber?.slice(-4)}</p>
           <p>Amount: ₹{paymentDetails?.amount?.toLocaleString()}</p>
@@ -75,7 +75,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
         <h3 className="text-xl font-semibold my-4">Flight Details</h3>
         
         {/* Outbound flight */}
-        <div className="mb-4 p-4 bg-gray-700 rounded">
+        <div className="mb-4 p-4 border border-[1px] border-gray-500 shadow-lg rounded">
           <h4 className="font-medium mb-2">Outbound Flight</h4>
           <div className="flex justify-between mb-1">
             <span>{selectedFlights.outbound.airline} ({selectedFlights.outbound.flightNumber})</span>
@@ -98,7 +98,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
         
         {/* Return flight if applicable */}
         {selectedFlights.return && (
-          <div className="mb-4 p-4 bg-gray-700 rounded">
+          <div className="mb-4 p-4 border border-[1px] border-gray-500 shadow-lg rounded">
             <h4 className="font-medium mb-2">Return Flight</h4>
             <div className="flex justify-between mb-1">
               <span>{selectedFlights.return.airline} ({selectedFlights.return.flightNumber})</span>
@@ -122,11 +122,11 @@ const Confirmation: React.FC<ConfirmationProps> = ({
       </div>
       
       {/* Passenger Details */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-6">
+      <div className="bg-[#2A2C2E] p-6 rounded-lg mb-6">
         <h3 className="text-xl font-semibold mb-4">Passenger Details</h3>
         
         {passengers.map((passenger, index) => (
-          <div key={index} className="mb-4 p-3 bg-gray-700 rounded">
+          <div key={index} className="mb-4 p-3 border border-[1px] border-gray-500 shadow-lg rounded w-fit">
             <h4 className="font-medium">Passenger {index + 1}</h4>
             <p>Name: {passenger.name}</p>
             <p>Email: {passenger.email}</p>
@@ -141,7 +141,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
       </div>
       
       {/* Payment Summary */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-6">
+      <div className="bg-[#2A2C2E] p-6 rounded-lg mb-6">
         <h3 className="text-xl font-semibold mb-4">Payment Summary</h3>
         
         <div className="flex justify-between mb-2">
@@ -174,7 +174,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
       <div className="mt-6 text-center">
         <button 
           onClick={handleNewSearch}
-          className="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+          className="px-6 py-3 bg-green-600 rounded hover:bg-green-700 transition"
         >
           Book Another Flight
         </button>

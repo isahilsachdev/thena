@@ -1,18 +1,18 @@
 "use client";
 
 import React from 'react'
-import UserDetails from '../components/UserDetails'
+import AdminDashboard from '../components/AdminDashboard'
 import Header from '../components/Header'
 
-const UserDetailsPage = () => {
+const AdminDashboardPage = () => {
   return (
     <>
     <Header />
     <div className='bg-[#1B1D1E] min-h-screen py-10'>
-      <UserDetails />
+      <AdminDashboard />
     </div>
     </>
   )
 }
 
-export default UserDetailsPage
+export default AdminDashboardPage

@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="flex justify-between items-center p-4 bg-gray-800 text-white">
+    <header className="flex justify-between items-center p-4 bg-[#2A2C2E] text-white">
       <h1 className="text-xl">Flight Booking</h1>
       <nav>
         <a href="/user-details" className="mr-4">User Details</a>

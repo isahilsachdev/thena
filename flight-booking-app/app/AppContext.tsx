@@ -15,7 +15,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined); // Crea
 // Create a provider component
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [passengers, setPassengers] = useState<Passenger[]>([]); 
-  const [token, setToken] = useState<string | null>(localStorage.getItem('token')); // Initialize token state from local storage
+  const [token, setToken] = useState<string | null>(!!localStorage ? localStorage?.getItem('token') : ''); // Initialize token state from local storage
   const [selectedFlights, setSelectedFlights] = useState<{ outbound?: Flight; return?: Flight }>({});
   const [searchData, setSearchData] = useState<{ origin: string; destination: string; cabinClass: string; isReturn: boolean }>({
     origin: '',

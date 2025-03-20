@@ -47,11 +47,11 @@ const PassengerDetails: React.FC<PassengerDetailsProps> = ({
     <div className="w-full max-w-2xl">
       <h2 className="text-2xl font-semibold mb-6">Passenger Details</h2>
 
-      <form onSubmit={handleBookingConfirmation} className="bg-gray-800 p-6 rounded-lg">
+      <form onSubmit={handleBookingConfirmation} className="bg-[#2A2C2E] p-6 rounded-lg">
         <h3 className="text-lg font-medium mb-4">Enter Passenger Information</h3>
 
         {passengers.map((passenger, index) => (
-          <div key={index} className="mb-6 p-4 bg-gray-700 rounded">
+          <div key={index} className="mb-6 p-4 rounded">
             <h4 className="font-medium mb-3">Passenger {index + 1}</h4>
 
             <div className="mb-3">

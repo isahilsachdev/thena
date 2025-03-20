@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "../AppContext"; // Import useAppContext
 import { useRouter } from "next/navigation"; // Import useRouter
 import { loginUser } from "../api";
 import { toast } from "react-toastify";
 
 export default function Login() {
+  useEffect(() => {
+    localStorage.removeItem('token'); // Remove token from local storage
+  }, []);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,13 +26,13 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-    const response = await loginUser(formData);
-    const { session } = response.data; // Get session token from response
-    localStorage.setItem('token', session); // Save token in local storage
-    setToken(session); // Update context with token
-    toast.success('Login successful!');
-    router.push('/'); // Redirect to homepage
-
+      const response = await loginUser(formData);
+      const { session } = response.data; // Get session token from response
+      localStorage.setItem('token', session); // Save token in local storage
+      console.log('first', session);
+      setToken(session); // Update context with token
+      toast.success('Login successful!');
+      router.push('/'); // Redirect to homepage
     } catch (err) {
       toast.error(err.response.data.message || 'Something went wrong, Please try again!');
       console.error(err.response.data.message);
@@ -36,9 +40,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-gray-900 text-white">
+    <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-[#1B1D1E] text-white">
       <h1 className="text-3xl font-bold mb-4">Login</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-lg bg-gray-800 p-6 rounded-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-lg bg-[#2A2C2E] p-6 rounded-lg">
         <div>
           <label className="block text-sm mb-1">Email</label>
           <input
@@ -61,7 +65,7 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit" className="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition">
+        <button type="submit" className="bg-[#2A2C2E] p-2 rounded text-white hover:bg-[#2A2C2E] transition">
           Login
         </button>
         <p>

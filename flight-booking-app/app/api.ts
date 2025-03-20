@@ -10,6 +10,7 @@ const api = axios.create({
   },
 });
 
+console.log('token', localStorage.getItem('token'))
 
 // Add an Axios response interceptor
 // api.interceptors.response.use(
@@ -90,6 +91,11 @@ export const registerUser = async (userData: UserData) => {
 
 export const fetchUserProfile = async () => {
   const response = await api.get('/users/profile');
+  return response.data;
+};
+
+export const getAnalytics = async () => {
+  const response = await api.get('/analytics');
   return response.data;
 };
 

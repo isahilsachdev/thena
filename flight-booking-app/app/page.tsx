@@ -8,7 +8,7 @@ import Confirmation from "./components/Confirmation";
 import PassengerDetails from "./components/PassengerDetails";
 import Payment from "./components/Payment"; // Import Payment component
 import FlightList from "./components/FlightList";
-import { fetchFlights } from "./api";
+import { fetchFlights, getAnalytics } from "./api";
 import Header from "./components/Header";
 import { useAppContext } from "./AppContext";
 import { useRouter } from "next/navigation";
@@ -43,7 +43,7 @@ export default function Home() {
     }
   }, [router, token]);
   // State for different views
-  const [currentView, setCurrentView] = useState("search"); // search, flights, seatSelection, passengerDetails, confirmation
+  const [currentView, setCurrentView] = useState("confirmation"); // search, flights, seatSelection, passengerDetails, confirmation
 
   const [searchData, setSearchData] = useState({
     origin: "AGX",
@@ -202,10 +202,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-gray-900 text-white">
+      <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-[#1B1D1E] text-white">
         {/* Search Form */}
         {currentView === "search" && (
-          <form onSubmit={handleSearch} className="flex flex-col gap-4 w-full max-w-lg bg-gray-800 p-6 rounded-lg relative">
+          <form onSubmit={handleSearch} className="flex flex-col gap-4 w-full max-w-lg bg-[#2A2C2E] p-6 rounded-lg relative">
             <h2 className="text-xl font-semibold mb-2">Search Flights</h2>
             
             {/* Flight Type Selection */}
@@ -367,7 +367,7 @@ export default function Home() {
               </select>
             </div>
             
-            <button type="submit" className="bg-blue-500 p-2 rounded text-white hover:bg-blue-600 transition">Search Flights</button>
+            <button type="submit" className="bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition">Search Flights</button>
           </form>
         )}
 

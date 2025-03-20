@@ -88,7 +88,7 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
   return (
     <div className="w-full max-w-md mx-auto">
       <h2 className="text-2xl font-semibold mb-6 text-white">Payment Details</h2>
-      <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded-lg">
+      <form onSubmit={handleSubmit} className="bg-[#2A2C2E] p-6 rounded-lg">
         <div className="mb-4">
           <label className="block text-sm mb-1 text-white">Card Type</label>
           <div className="flex gap-4 text-white">

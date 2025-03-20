@@ -53,11 +53,11 @@ const FlightList: React.FC<FlightListProps> = ({
             return returnFlights.length === 0 ? (
               <div 
                 key={outboundFlight.id} 
-                className={`bg-gray-700 p-4 rounded-lg mb-4 border-2 ${
+                className={`bg-[#2A2C2E] p-4 rounded-lg mb-4 border-2 ${
                   selectedFlights.outbound?.id === outboundFlight.id 
                     ? 'border-blue-500' 
                     : 'border-transparent'
-                } cursor-pointer hover:border-blue-400 transition`}
+                } cursor-pointer transition`}
                 onClick={() => handleFlightSelection(outboundFlight, "outbound")}
               >
                 <div className="flex justify-between items-center mb-2">
@@ -77,7 +77,7 @@ const FlightList: React.FC<FlightListProps> = ({
                 </div>
                 
                 <button 
-                  className="mt-3 bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition"
+                  className="mt-3 bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFlightSelection(outboundFlight, "outbound");
@@ -90,7 +90,7 @@ const FlightList: React.FC<FlightListProps> = ({
               returnFlights.map((returnFlight) => (
                 <div 
                   key={`${outboundFlight.id}-${returnFlight.id}`} 
-                  className={`bg-gray-700 p-4 rounded-lg mb-4 border-2 ${
+                  className={`bg-[#2A2C2E] p-4 rounded-lg mb-4 border-2 ${
                     selectedFlights.outbound?.id === outboundFlight.id && selectedFlights.return?.id === returnFlight.id 
                       ? 'border-blue-500' 
                       : 'border-transparent'
@@ -136,7 +136,7 @@ const FlightList: React.FC<FlightListProps> = ({
                   </div>
                   
                   <button 
-                    className="mt-3 bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition"
+                    className="mt-3 bg-[#2A2C2E] text-white px-4 py-1 rounded hover:bg-[#2A2C2E] transition"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleFlightSelection(outboundFlight, "outbound");

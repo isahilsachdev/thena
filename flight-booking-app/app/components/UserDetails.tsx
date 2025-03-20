@@ -37,7 +37,7 @@ const UserDetails = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {/* User Info Card */}
-      <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md mb-6">
+      <div className="bg-[#2A2C2E] text-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-2xl font-semibold mb-4">User Information</h2>
         <div className="flex flex-col gap-2">
           <p><span className="font-bold">Name:</span> {userDetails.name || 'N/A'}</p>
@@ -47,7 +47,7 @@ const UserDetails = () => {
       </div>
 
       {/* Booked Flights */}
-      <div className="bg-gray-800 text-white p-6 rounded-lg shadow-md">
+      <div className="bg-[#2A2C2E] text-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Booked Flights</h2>
         {userDetails.flights.length > 0 ? (
           <ul className="space-y-4">
