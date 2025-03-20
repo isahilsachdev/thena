@@ -60,7 +60,6 @@ const login = async (req, res, next) => {
       password
     });
 
-    console.log('first', data, error);
     if (error) {
       if (error.code === 'email_not_confirmed') {
         return next(new AppError('Email not confirmed. Please check your email for the confirmation link.', 401));

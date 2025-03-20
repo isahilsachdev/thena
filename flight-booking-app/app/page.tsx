@@ -107,7 +107,6 @@ export default function Home() {
       searchData.departureDate
     );
 
-    console.log('first', outboundFlights)
     // Generate mock flights for return journey if applicable
     const returnFlights = searchData.isReturn ? 
       await fetchFlights(
@@ -343,7 +342,6 @@ export default function Home() {
                 value={searchData.passengers} 
                 onChange={(e) => {
                   const numPassengers = parseInt(e.target.value) || 1;
-                  console.log('first', numPassengers)
                   setSearchData({ ...searchData, passengers: numPassengers });
 
                   const updatedPassengers = Array.from({ length: numPassengers }, () => ({ name: "", email: "" }));

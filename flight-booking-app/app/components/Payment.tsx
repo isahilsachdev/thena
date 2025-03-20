@@ -159,12 +159,21 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
           />
         </div>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-600 rounded hover:bg-green-700 transition w-full text-white"
-        >
-          Pay Now
-        </button>
+        <div className='flex gap-4'>
+          <button
+            type="button"
+            onClick={() => setCurrentView("passengerDetails")}
+            className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 transition"
+          >
+            Back
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-green-600 rounded hover:bg-green-700 transition w-full text-white"
+          >
+            Pay Now
+          </button>
+        </div>
       </form>
     </div>
   );

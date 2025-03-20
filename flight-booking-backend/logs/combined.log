@@ -337,3 +337,69 @@
 {"level":"error","message":"Error: Invalid token or user not found\n    at protect (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/middleware/auth.middleware.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T05:57:02.034Z"}
 {"level":"error","message":"401 - Invalid login credentials - /api/auth/login - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-20T05:57:12.912Z"}
 {"level":"error","message":"Error: Invalid login credentials\n    at login (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/auth.controller.js:68:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T05:57:12.913Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:41:14.738Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:47:31.315Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:49:17.336Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:49:27.527Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:49:34.733Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:49:40.263Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:15.848Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:17.675Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:19.556Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:27.646Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:28.784Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:50:41.876Z"}
+{"level":"error","message":"400 - invalid input syntax for type timestamp with time zone: \"11:35 PM\" - /api/flights?origin=Agatti%20Island%20Airport%20(AGX)&destination=Ahmedabad%20Airport%20(AMD)&date=2025-03-27 - GET - ::1","service":"flight-tracker-api","timestamp":"2025-03-20T06:51:25.318Z"}
+{"level":"error","message":"Error: invalid input syntax for type timestamp with time zone: \"11:35 PM\"\n    at getFlights (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/controllers/flight.controller.js:75:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T06:51:25.318Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:51:55.352Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:51:56.394Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:52:04.699Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:52:13.060Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:54:07.487Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T06:54:10.714Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:07:24.383Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:07:28.252Z"}
+{"level":"error","message":"401 - Invalid token or user not found - /api/payment - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-20T07:08:29.253Z"}
+{"level":"error","message":"Error: Invalid token or user not found\n    at protect (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/middleware/auth.middleware.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T07:08:29.254Z"}
+{"level":"error","message":"401 - Invalid token or user not found - /api/payment - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:11.761Z"}
+{"level":"error","message":"Error: Invalid token or user not found\n    at protect (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/middleware/auth.middleware.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:11.761Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:30.893Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:34.050Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:34.470Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:37.805Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:39.404Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:42.863Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:43.082Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:52.735Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:09:57.479Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:00.321Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:04.373Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:06.829Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:15.978Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:40.037Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:10:42.531Z"}
+{"level":"error","message":"401 - Invalid token or user not found - /api/payment - POST - ::1","service":"flight-tracker-api","timestamp":"2025-03-20T07:11:01.396Z"}
+{"level":"error","message":"Error: Invalid token or user not found\n    at protect (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/middleware/auth.middleware.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-20T07:11:01.396Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:17.533Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:19.407Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:24.515Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:27.877Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:28.418Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:51.244Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:12:54.048Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:13:48.307Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:15:43.303Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:15:43.722Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:16:14.301Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:16:15.612Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:16:45.784Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:16:45.925Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:17:07.148Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:17:54.964Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:18:02.282Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:18:17.705Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:18:21.514Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:18:25.084Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:18:30.485Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:19:30.883Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-20T07:19:31.393Z"}

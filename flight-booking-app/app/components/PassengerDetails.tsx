@@ -92,7 +92,7 @@ const PassengerDetails: React.FC<PassengerDetailsProps> = ({
         <div className="mt-4 flex justify-between items-center">
           <button
             type="button"
-            onClick={() => setCurrentView("payments")}
+            onClick={() => setCurrentView("flights")}
             className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 transition"
           >
             Back

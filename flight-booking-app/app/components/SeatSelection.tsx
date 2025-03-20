@@ -67,69 +67,100 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
     }
   };
 
-  console.log('selectedFlights.return', selectedFlights.return)
-
   return (
-    <div className="w-full max-w-2xl">
+    <div className="w-full max-w-2xl text-center">
       <h2 className="text-2xl font-semibold mb-6">Select Seats</h2>
-
-      <div className="mb-6">
-        <h3 className="text-lg font-medium mb-4">
-          Outbound Flight: {selectedFlights.outbound.airline} (
-          {selectedFlights.outbound.flightNumber})
-        </h3>
-        <div className="grid grid-cols-6 gap-2">
-          {Array.from({ length: 30 }, (_, row) =>
-            Array.from({ length: 6 }, (_, col) => {
-              const seat = String.fromCharCode(65 + col) + (row + 1);
-              return (
-                <button
-                  key={seat}
-                  className={`p-2 rounded ${
-                    selectedSeats.outbound.includes(seat)
-                      ? "bg-blue-500"
-                      : "bg-gray-700"
-                  } hover:bg-blue-600 transition`}
-                  onClick={() => handleSeatSelection("outbound", seat)}
-                >
-                  {seat}
-                </button>
-              );
-            })
-          )}
-        </div>
-      </div>
-
-      {!!selectedFlights.return && !!selectedFlights.return.airline && (
+      <div className="flex space-x-12 justify-center items-center mb-6">
         <div className="mb-6">
-          <h3 className="text-lg font-medium mb-4">
-            Return Flight: {selectedFlights.return.airline} (
-            {selectedFlights.return.flightNumber})
+          <h3 className="text-lg font-medium mb-2">
+            Outbound Flight: {selectedFlights.outbound.airline} ({selectedFlights.outbound.flightNumber})
           </h3>
-          <div className="grid grid-cols-6 gap-2">
-            {Array.from({ length: 30 }, (_, row) =>
-              Array.from({ length: 6 }, (_, col) => {
-                const seat = String.fromCharCode(65 + col) + (row + 1);
-                return (
-                  <button
-                    key={seat}
-                    className={`p-2 rounded ${
-                      selectedSeats.return.includes(seat)
-                        ? "bg-blue-500"
-                        : "bg-gray-700"
-                    } hover:bg-blue-600 transition`}
-                    onClick={() => handleSeatSelection("return", seat)}
-                  >
-                    {seat}
-                  </button>
-                );
-              })
-            )}
+          <div className="bg-gray-800 p-4 rounded-md inline-block">
+            <p className="text-gray-400 mb-2">Cockpit</p>
+            {Array.from({ length: 30 }, (_, row) => (
+              <div key={row} className="flex justify-center mb-1">
+                {Array.from({ length: 3 }, (_, col) => {
+                  const seat = String.fromCharCode(65 + col) + (row + 1);
+                  return (
+                    <button
+                      key={seat}
+                      className={`m-1 w-8 h-8 p-2 rounded text-center flex items-center justify-center ${
+                        selectedSeats.outbound.includes(seat) ? "bg-blue-500" : "bg-gray-700"
+                      } hover:bg-blue-600 transition`}
+                      onClick={() => handleSeatSelection("outbound", seat)}
+                    >
+                      <span className="text-sm">{seat}</span>
+                    </button>
+                  );
+                })}
+                <div className="w-8"></div>
+                {Array.from({ length: 3 }, (_, col) => {
+                  const seat = String.fromCharCode(68 + col) + (row + 1);
+                  return (
+                    <button
+                      key={seat}
+                      className={`m-1 w-8 h-8 p-2 rounded text-center flex items-center justify-center ${
+                        selectedSeats.outbound.includes(seat) ? "bg-blue-500" : "bg-gray-700"
+                      } hover:bg-blue-600 transition`}
+                      onClick={() => handleSeatSelection("outbound", seat)}
+                    >
+                      <span className="text-sm">{seat}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            ))}
+            <p className="text-gray-400 mt-2">Back of Plane</p>
           </div>
         </div>
-      )}
 
-      <div className="mt-4 flex justify-between items-center">
+        {!!selectedFlights.return && !!selectedFlights.return.airline && (
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-2">
+              Return Flight: {selectedFlights.return.airline} ({selectedFlights.return.flightNumber})
+            </h3>
+            <div className="bg-gray-800 p-4 rounded-md inline-block">
+              <p className="text-gray-400 mb-2">Cockpit</p>
+              {Array.from({ length: 30 }, (_, row) => (
+                <div key={row} className="flex justify-center mb-1">
+                  {Array.from({ length: 3 }, (_, col) => {
+                    const seat = String.fromCharCode(65 + col) + (row + 1);
+                    return (
+                      <button
+                        key={seat}
+                        className={`m-1 w-10 h-10 p-2 rounded text-center flex items-center justify-center ${
+                          selectedSeats.return.includes(seat) ? "bg-blue-500" : "bg-gray-700"
+                        } hover:bg-blue-600 transition`}
+                        onClick={() => handleSeatSelection("return", seat)}
+                      >
+                        {seat}
+                      </button>
+                    );
+                  })}
+                  <div className="w-8"></div>
+                  {Array.from({ length: 3 }, (_, col) => {
+                    const seat = String.fromCharCode(68 + col) + (row + 1);
+                    return (
+                      <button
+                        key={seat}
+                        className={`m-1 w-10 h-10 p-2 rounded text-center flex items-center justify-center ${
+                          selectedSeats.return.includes(seat) ? "bg-blue-500" : "bg-gray-700"
+                        } hover:bg-blue-600 transition`}
+                        onClick={() => handleSeatSelection("return", seat)}
+                      >
+                        {seat}
+                      </button>
+                    );
+                  })}
+                </div>
+              ))}
+              <p className="text-gray-400 mt-2">Back of Plane</p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-4 flex justify-center space-x-4 items-center">
         <button
           type="button"
           onClick={() => setCurrentView("flights")}

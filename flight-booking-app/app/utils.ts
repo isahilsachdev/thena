@@ -822,7 +822,7 @@ export const generateMockFlights = (
   const flights: Flight[] = [];
 
   airlines.forEach((airline) => {
-    const numFlights = 2 + Math.floor(Math.random() * 2);
+    const numFlights = 8;
 
     for (let i = 0; i < numFlights; i++) {
       const departureHour = 6 + Math.floor(Math.random() * 16);

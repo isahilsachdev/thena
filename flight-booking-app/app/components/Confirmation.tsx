@@ -67,10 +67,12 @@ const Confirmation: React.FC<ConfirmationProps> = ({
       
       <div className="bg-gray-800 p-6 rounded-lg mb-6">
         <h3 className="text-xl font-semibold mb-4">Payment Details</h3>
-        <p>Payment Method: Credit Card</p>
-        <p>Card Number: **** **** **** {paymentDetails?.cardNumber?.slice(-4)}</p>
-        <p>Amount: ₹{paymentDetails?.amount?.toLocaleString()}</p>
-        <h3 className="text-xl font-semibold mb-4">Flight Details</h3>
+        <div className='bg-gray-700 rounded w-fit p-4'>
+          <p>Payment Method: Credit Card</p>
+          <p>Card Number: **** **** **** {paymentDetails?.cardNumber?.slice(-4)}</p>
+          <p>Amount: ₹{paymentDetails?.amount?.toLocaleString()}</p>
+        </div>
+        <h3 className="text-xl font-semibold my-4">Flight Details</h3>
         
         {/* Outbound flight */}
         <div className="mb-4 p-4 bg-gray-700 rounded">
