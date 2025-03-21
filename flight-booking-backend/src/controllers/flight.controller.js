@@ -5,7 +5,12 @@ const logger = require('../utils/logger');
 const { v4: uuidv4 } = require('uuid'); // Import UUID generator
 
 /**
- * Get all flights with optional filtering
+ * Retrieves all flights, optionally filtered by origin, destination, date, and status.
+ * Generates random flight data for demonstration purposes.
+ * 
+ * @param {Object} req - The request object containing query parameters for filtering.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const getFlights = async (req, res, next) => {
   try {
@@ -98,7 +103,12 @@ const getFlights = async (req, res, next) => {
 };
 
 /**
- * Get a single flight by ID
+ * Retrieves a single flight by its ID.
+ * Validates the ID and handles errors if the flight is not found.
+ * 
+ * @param {Object} req - The request object containing the flight ID in the parameters.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const getFlightById = async (req, res, next) => {
   try {
@@ -130,7 +140,12 @@ const getFlightById = async (req, res, next) => {
 };
 
 /**
- * Create a new flight
+ * Creates a new flight with the provided details.
+ * Validates required fields and handles errors during creation.
+ * 
+ * @param {Object} req - The request object containing flight details in the body.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const createFlight = async (req, res, next) => {
   try {
@@ -184,7 +199,12 @@ const createFlight = async (req, res, next) => {
 };
 
 /**
- * Update a flight
+ * Updates an existing flight with the provided details.
+ * Validates the flight ID and handles errors if the flight is not found.
+ * 
+ * @param {Object} req - The request object containing the flight ID in the parameters and updated details in the body.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const updateFlight = async (req, res, next) => {
   try {
@@ -244,7 +264,12 @@ const updateFlight = async (req, res, next) => {
 };
 
 /**
- * Delete a flight
+ * Deletes a flight by its ID.
+ * Validates the ID and handles errors if the flight is not found.
+ * 
+ * @param {Object} req - The request object containing the flight ID in the parameters.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const deleteFlight = async (req, res, next) => {
   try {
@@ -270,7 +295,12 @@ const deleteFlight = async (req, res, next) => {
 };
 
 /**
- * Server-Sent Events (SSE) endpoint for real-time flight updates
+ * Sets up a Server-Sent Events (SSE) endpoint for real-time flight updates.
+ * Sends updates to the client when changes occur in the flights table.
+ * 
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object to send the updates.
+ * @param {Function} next - The next middleware function.
  */
 const subscribeToFlightUpdates = async (req, res, next) => {
   try {

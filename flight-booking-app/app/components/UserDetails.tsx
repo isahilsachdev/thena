@@ -3,26 +3,48 @@
 import React, { useEffect, useState } from 'react';
 import { fetchUserProfile, cancelBooking } from '../api';
 
+/**
+ * UserDetails component displays user profile information and booked flights.
+ * Allows users to view their personal information and manage flight bookings.
+ * 
+ * @returns {JSX.Element} The rendered user details page
+ */
 const UserDetails = () => {
-  const [userDetails, setUserDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Fetches the user's profile data from the API.
+   * Updates state with the retrieved data or error message.
+   * 
+   * @returns {Promise<void>}
+   */
   const fetchUserDetails = async (): Promise<void> => {
     try {
       const response = await fetchUserProfile();
       setUserDetails(response.data.profile);
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
 
+  /**
+   * Effect hook to fetch user details on component mount.
+   */
   useEffect(() => {
     fetchUserDetails();
   }, []);
 
+  /**
+   * Handles the cancellation of a flight booking.
+   * Makes an API call to cancel the booking and refreshes user data.
+   * 
+   * @param {string} bookingId - The ID of the booking to cancel
+   * @returns {Promise<void>}
+   */
   const handleCancelBooking = async (bookingId: string) => {
     try {
       setLoading(true);

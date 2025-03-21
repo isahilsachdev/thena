@@ -29,10 +29,19 @@ type FlightListProps = {
     return: Flight[];
   };
   selectedFlights: SelectedFlights;
-  handleFlightSelection: (flight: Flight, type: "outbound" | "return") => void;
+  handleFlightSelection: any;
   searchData: SearchData;
 };
 
+/**
+ * FlightList component displays available flights based on search criteria and allows users to select flights.
+ * 
+ * @param {Object} availableFlights - Object containing arrays of outbound and return flights
+ * @param {SelectedFlights} selectedFlights - Currently selected outbound and return flights
+ * @param {Function} handleFlightSelection - Function to handle flight selection
+ * @param {SearchData} searchData - Search criteria including origin, destination, and cabin class
+ * @returns {JSX.Element} Rendered flight list with selectable flight options
+ */
 const FlightList: React.FC<FlightListProps> = ({ 
   availableFlights, 
   selectedFlights, 

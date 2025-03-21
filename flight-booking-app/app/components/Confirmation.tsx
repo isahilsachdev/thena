@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 
 type Flight = {
@@ -33,13 +35,8 @@ type SelectedSeats = {
   return?: string[];
 };
 
-type PaymentDetails = {
-  cardNumber: string;
-  amount: number;
-};
-
 type ConfirmationProps = {
-  paymentDetails: PaymentDetails; // Add paymentDetails prop
+  paymentDetails: any;
   selectedFlights: SelectedFlights;
   searchData: SearchData;
   passengers: Passenger[];
@@ -48,6 +45,19 @@ type ConfirmationProps = {
   handleNewSearch: () => void;
 };
 
+/**
+ * Confirmation component displays the booking confirmation page with flight, passenger, 
+ * and payment details after a successful booking.
+ * 
+ * @param {PaymentDetails} paymentDetails - Details of the payment transaction
+ * @param {SelectedFlights} selectedFlights - Information about the selected outbound and optional return flights
+ * @param {SearchData} searchData - Original search parameters including origin, destination, dates, etc.
+ * @param {Passenger[]} passengers - Array of passenger information
+ * @param {SelectedSeats} selectedSeats - Information about selected seats for all passengers
+ * @param {Function} calculateTotalPrice - Function to calculate the total price of all flights
+ * @param {Function} handleNewSearch - Function to start a new flight search
+ * @returns {JSX.Element} Rendered confirmation page
+ */
 const Confirmation: React.FC<ConfirmationProps> = ({
   paymentDetails,
   selectedFlights,

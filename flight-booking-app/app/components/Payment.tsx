@@ -3,6 +3,7 @@ import { processPayment } from '../api';
 import { toast } from 'react-toastify';
 
 type Flight = {
+  id: string;
   airline: string;
   flightNumber: string;
   departureTime: string;
@@ -27,7 +28,7 @@ type SearchData = {
 };
 
 type PaymentProps = {
-  setPaymentDetails: (details: unknown) => void;
+  setPaymentDetails: any;
   setCurrentView: (view: string) => void;
   calculateTotalPrice: () => number;
   searchData: SearchData;
@@ -41,11 +42,23 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
   const [cvv, setCvv] = useState('');
   const [error, setError] = useState('');
 
-  const formatCardNumber = (value: string) => {
+/**
+ * Formats the card number by adding spaces every four digits.
+ * 
+ * @param {string} value - The card number input as a string.
+ * @returns {string} - The formatted card number with spaces.
+ */
+const formatCardNumber = (value: string) => {
     return value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim().slice(0, 19);
   };
 
-  const formatExpirationDate = (value: string) => {
+/**
+ * Formats the expiration date input to MM/YY format.
+ * 
+ * @param {string} value - The expiration date input as a string.
+ * @returns {string} - The formatted expiration date.
+ */
+const formatExpirationDate = (value: string) => {
     const cleaned = value.replace(/\D/g, '').slice(0, 4);
     if (cleaned.length >= 3) {
       return `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
@@ -53,12 +66,37 @@ const Payment: React.FC<PaymentProps> = ({ searchData, selectedFlights, setPayme
     return cleaned;
   };
   
+/**
+ * Validates the card number to ensure it is a 16-digit number.
+ * 
+ * @param {string} number - The card number input as a string.
+ * @returns {boolean} - True if the card number is valid, false otherwise.
+ */
+const validateCardNumber = (number: string) => /^[0-9]{16}$/.test(number.replace(/\s/g, ''));
 
-  const validateCardNumber = (number: string) => /^[0-9]{16}$/.test(number.replace(/\s/g, ''));
-  const validateExpirationDate = (date: string) => /^(0[1-9]|1[0-2])\/\d{2}$/.test(date);
-  const validateCVV = (cvv: string) => /^[0-9]{3,4}$/.test(cvv);
+/**
+ * Validates the expiration date to ensure it is in MM/YY format.
+ * 
+ * @param {string} date - The expiration date input as a string.
+ * @returns {boolean} - True if the expiration date is valid, false otherwise.
+ */
+const validateExpirationDate = (date: string) => /^(0[1-9]|1[0-2])\/\d{2}$/.test(date);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+/**
+ * Validates the CVV to ensure it is a 3 or 4-digit number.
+ * 
+ * @param {string} cvv - The CVV input as a string.
+ * @returns {boolean} - True if the CVV is valid, false otherwise.
+ */
+const validateCVV = (cvv: string) => /^[0-9]{3,4}$/.test(cvv);
+
+/**
+ * Handles the form submission for payment processing.
+ * Validates the card details and processes the payment.
+ * 
+ * @param {React.FormEvent} e - The form event.
+ */
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateCardNumber(cardNumber)) {
       setError('Invalid card number. Please enter a 16-digit card number.');

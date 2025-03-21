@@ -2,7 +2,12 @@ const supabase = require('../config/supabase');
 const { AppError } = require('../middleware/errorHandler');
 
 /**
- * Get user profile
+ * Retrieves the user profile along with booked flights.
+ * Validates the authorization token and handles errors during retrieval.
+ * 
+ * @param {Object} req - The request object containing the authorization token in headers.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const getProfile = async (req, res, next) => {
   try {
@@ -60,7 +65,12 @@ const getProfile = async (req, res, next) => {
 };
 
 /**
- * Update user profile
+ * Updates the user profile with the provided details.
+ * Validates the user ID and handles errors during the update process.
+ * 
+ * @param {Object} req - The request object containing updated profile details in the body.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const updateProfile = async (req, res, next) => {
   try {

@@ -1,10 +1,28 @@
 import React from 'react';
 
+/**
+ * Represents a passenger's information.
+ * 
+ * @type {Object}
+ * @property {string} name - The full name of the passenger.
+ * @property {string} email - The email address of the passenger.
+ */
 type Passenger = {
   name: string;
   email: string;
 };
 
+/**
+ * Represents flight information.
+ * 
+ * @type {Object}
+ * @property {string} airline - The name of the airline.
+ * @property {string} flightNumber - The flight number.
+ * @property {string} departureTime - The departure time of the flight.
+ * @property {string} arrivalTime - The arrival time of the flight.
+ * @property {string} duration - The duration of the flight.
+ * @property {number} price - The price of the flight.
+ */
 type Flight = {
   airline: string;
   flightNumber: string;
@@ -14,26 +32,58 @@ type Flight = {
   price: number;
 };
 
+/**
+ * Represents the selected flights for a booking.
+ * 
+ * @type {Object}
+ * @property {Flight} outbound - The outbound flight selected.
+ * @property {Flight} [return] - The return flight selected (optional).
+ */
 type SelectedFlights = {
   outbound: Flight;
   return?: Flight;
 };
 
+/**
+ * Represents the selected seats for a booking.
+ * 
+ * @type {Object}
+ * @property {string[]} outbound - The selected seats for the outbound flight.
+ * @property {string[]} [return] - The selected seats for the return flight (optional).
+ */
 type SelectedSeats = {
   outbound: string[];
   return?: string[];
 };
 
+/**
+ * Props for the PassengerDetails component.
+ * 
+ * @type {Object}
+ * @property {Passenger[]} passengers - The list of passengers.
+ * @property {function} handlePassengerChange - Function to handle changes to passenger information.
+ * @property {SelectedSeats} selectedSeats - The selected seats for the booking.
+ * @property {SelectedFlights} selectedFlights - The selected flights for the booking.
+ * @property {function} setCurrentView - Function to set the current view.
+ * @property {function} handleBookingConfirmation - Function to handle booking confirmation.
+ * @property {function} calculateTotalPrice - Function to calculate the total price of the booking.
+ */
 type PassengerDetailsProps = {
   passengers: Passenger[];
   handlePassengerChange: (index: number, field: "name" | "email", value: string) => void;
   selectedSeats: SelectedSeats;
   selectedFlights: SelectedFlights;
   setCurrentView: (view: string) => void;
-  handleBookingConfirmation: (event: React.FormEvent) => void;
+  handleBookingConfirmation: any;
   calculateTotalPrice: () => number;
 };
 
+/**
+ * Component for entering passenger details.
+ * 
+ * @param {PassengerDetailsProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const PassengerDetails: React.FC<PassengerDetailsProps> = ({
   passengers,
   handlePassengerChange,

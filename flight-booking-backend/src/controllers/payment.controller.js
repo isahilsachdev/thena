@@ -84,8 +84,14 @@ const createPayment = async (req, res, next) => {
 };
 
 /**
- * Get all payments
+ * Creates a new payment and associated bookings for the specified flight(s).
+ * Validates required fields and handles errors during payment processing.
+ * 
+ * @param {Object} req - The request object containing payment details in the body.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
+
 const getPayment = async (req, res) => {
   const { data, error } = await supabase
     .from('payments')

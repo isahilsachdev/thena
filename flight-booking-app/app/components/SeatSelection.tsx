@@ -5,6 +5,10 @@ import { toast } from "react-toastify";
 interface Flight {
   airline: string;
   flightNumber: string;
+  departureTime: string;
+  arrivalTime: string;
+  duration: string;
+  price: number;
 }
 
 interface SelectedFlights {
@@ -30,6 +34,17 @@ interface SeatSelectionProps {
   searchData: SearchData;
 }
 
+/**
+ * SeatSelection component allows users to select seats for their flights.
+ * It displays seat maps for both outbound and return flights (if applicable).
+ * 
+ * @param {SelectedFlights} selectedFlights - The flights selected by the user
+ * @param {SelectedSeats} selectedSeats - Currently selected seats for outbound and return flights
+ * @param {Function} setSelectedSeats - State setter function for updating selected seats
+ * @param {Function} setCurrentView - State setter function for changing the current view
+ * @param {SearchData} searchData - Search data including number of passengers and return flight status
+ * @returns {JSX.Element} Rendered seat selection interface
+ */
 const SeatSelection: React.FC<SeatSelectionProps> = ({
   selectedFlights,
   selectedSeats,
@@ -37,10 +52,19 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
   setCurrentView,
   searchData
 }) => {
+  /**
+   * Shows a success toast when the component mounts to confirm flight selection
+   */
   useEffect(() => {
     toast.success('Flight selected successfully!');
   }, [])
 
+  /**
+   * Handles the selection and deselection of seats
+   * 
+   * @param {string} type - Type of flight ("outbound" or "return")
+   * @param {string} seat - Seat identifier (e.g., "A1", "B2")
+   */
   const handleSeatSelection = (type: "outbound" | "return", seat: string) => {
     setSelectedSeats((prevSelectedSeats) => {
       const seats = prevSelectedSeats[type].includes(seat)
@@ -55,6 +79,11 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
     });
   };
 
+  /**
+   * Validates that the correct number of seats have been selected for all flights
+   * 
+   * @returns {boolean} True if seat selection is valid, false otherwise
+   */
   const validateSeatSelection = () => {
     if (selectedSeats.outbound.length !== searchData.passengers) {
       alert(`Please select ${searchData.passengers} seats for the outbound flight.`);
@@ -67,6 +96,10 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
     return true;
   };
 
+  /**
+   * Handles proceeding to the next step after validating seat selection
+   * Shows success toast and changes view if validation passes
+   */
   const handleProceed = () => {
     if (validateSeatSelection()) {
       setCurrentView("passengerDetails");

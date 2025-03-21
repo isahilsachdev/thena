@@ -5,11 +5,21 @@ import { getAnalytics } from '../api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, LineElement, PointElement);
 
+/**
+ * AdminDashboard component displays analytics data including user statistics, 
+ * flight bookings, and earnings in a dashboard format.
+ * 
+ * @returns {JSX.Element} Rendered admin dashboard with charts and stats
+ */
 const AdminDashboard = () => {
   const [analytics, setAnalytics] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Fetches analytics data from the API when the component mounts.
+   * Updates state with the fetched data or sets an error message.
+   */
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
@@ -24,17 +34,30 @@ const AdminDashboard = () => {
     fetchAnalytics();
   }, []);
 
-  if (loading) return <div className="flex justify-center items-center h-screen text-xl">Loading...</div>;
+  if (loading) return (
+    <div className="flex justify-center items-center h-screen bg-[#1B1D1E]">
+      <div className="w-12 h-12 border-4 border-gray-300 border-t-white rounded-full animate-spin"></div>
+    </div>
+  );  
   if (error) return <div className="text-red-500 text-center mt-10">Error: {error}</div>;
 
   const { totalUsers, activeUsersToday, userSpending, totalFlightsBooked, totalEarnings, usersLast7Days, flightsLast7Days } = analytics;
 
-  // Chart Data
+  /**
+   * Prepares chart data for users registered in the last 7 days.
+   * 
+   * @returns {Object} Configuration for Bar chart displaying user registrations
+   */
   const usersLast7DaysChartData = {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{ label: 'Users Signed Up', data: usersLast7Days, backgroundColor: 'rgba(75, 192, 192, 0.6)' }],
   };
 
+  /**
+   * Prepares chart data for flights booked in the last 7 days.
+   * 
+   * @returns {Object} Configuration for Line chart displaying flight bookings
+   */
   const flightsLast7DaysChartData = {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{ label: 'Flights Booked', data: flightsLast7Days, borderColor: 'rgba(153, 102, 255, 1)', borderWidth: 2, fill: true }],

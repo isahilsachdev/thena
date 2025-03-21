@@ -28,7 +28,7 @@ export interface Flight {
 }
 
 // API call functions
-export const processPayment = async (paymentDetails: { cardNumber: string; amount: number; flightId: string[] }) => {
+export const processPayment = async (paymentDetails: { cardNumber: string; amount: number; flightId: (string | undefined)[] }) => {
   const response = apiCall('post', '/payment', paymentDetails);
   return response;
 };
@@ -42,7 +42,7 @@ export const fetchFlights = async (
   origin: string,
   destination: string,
   date: string
-): any => {
+): Promise<any> => {
   const response = await apiCall('get', '/flights?origin=' + origin + '&destination=' + destination + '&date=' + date);
   return response.data.flights;
 };

@@ -2,7 +2,12 @@ const supabase = require('../config/supabase');
 const { AppError } = require('../middleware/errorHandler');
 
 /**
- * Cancel a booking
+ * Cancels a booking with the specified booking ID.
+ * Validates the authorization token and checks if the booking exists before deletion.
+ * 
+ * @param {Object} req - The request object containing the booking ID in the parameters and authorization token in headers.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const cancelBooking = async (req, res, next) => {
   try {

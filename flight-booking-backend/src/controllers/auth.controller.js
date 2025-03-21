@@ -4,7 +4,12 @@ const { AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 
 /**
- * Register a new user
+ * Registers a new user with the provided email, password, and name.
+ * Validates input and handles errors during registration.
+ * 
+ * @param {Object} req - The request object containing user details.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const register = async (req, res, next) => {
   try {
@@ -43,7 +48,12 @@ const register = async (req, res, next) => {
 };
 
 /**
- * Login a user
+ * Logs in a user with the provided email and password.
+ * Validates input and handles errors during login.
+ * 
+ * @param {Object} req - The request object containing user credentials.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const login = async (req, res, next) => {
   try {
@@ -80,7 +90,12 @@ const login = async (req, res, next) => {
 };
 
 /**
- * Logout a user
+ * Logs out the currently authenticated user.
+ * Handles errors during logout.
+ * 
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const logout = async (req, res, next) => {
   try {
@@ -100,7 +115,12 @@ const logout = async (req, res, next) => {
 };
 
 /**
- * Reset password
+ * Sends a password reset email to the user with the provided email address.
+ * Validates input and handles errors during the password reset process.
+ * 
+ * @param {Object} req - The request object containing the user's email.
+ * @param {Object} res - The response object to send the result.
+ * @param {Function} next - The next middleware function.
  */
 const resetPassword = async (req, res, next) => {
   try {
