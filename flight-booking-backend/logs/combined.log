@@ -702,3 +702,5 @@
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T06:08:18.183Z"}
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T06:08:18.911Z"}
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T06:08:37.658Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T06:14:24.924Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T06:14:26.497Z"}

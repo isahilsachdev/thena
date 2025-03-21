@@ -57,6 +57,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
   calculateTotalPrice,
   handleNewSearch,
 }) => {
+  console.log('paymentDetails', paymentDetails)
 
   return (
     <div className="w-full max-w-2xl">
@@ -125,19 +126,21 @@ const Confirmation: React.FC<ConfirmationProps> = ({
       <div className="bg-[#2A2C2E] p-6 rounded-lg mb-6">
         <h3 className="text-xl font-semibold mb-4">Passenger Details</h3>
         
-        {passengers.map((passenger, index) => (
-          <div key={index} className="mb-4 p-3 border border-[1px] border-gray-500 shadow-lg rounded w-fit">
-            <h4 className="font-medium">Passenger {index + 1}</h4>
-            <p>Name: {passenger.name}</p>
-            <p>Email: {passenger.email}</p>
-            <div className="mt-2">
-              <p>Outbound Seat: <span className="font-bold">{selectedSeats.outbound[index]}</span></p>
-              {selectedFlights.return && (
-                <p>Return Seat: <span className="font-bold">{selectedSeats.return ? selectedSeats.return[index] : 'N/A'}</span></p>
-              )}
+        <div className='flex space-x-4 flex-wrap'>
+          {passengers.map((passenger, index) => (
+            <div key={index} className="mb-4 p-3 border border-[1px] border-gray-500 shadow-lg rounded w-fit">
+              <h4 className="font-medium">Passenger {index + 1}</h4>
+              <p>Name: {passenger.name}</p>
+              <p>Email: {passenger.email}</p>
+              <div className="mt-2">
+                <p>Outbound Seat: <span className="font-bold">{selectedSeats.outbound[index]}</span></p>
+                {selectedFlights.return && (
+                  <p>Return Seat: <span className="font-bold">{selectedSeats.return ? selectedSeats.return[index] : 'N/A'}</span></p>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       {/* Payment Summary */}
@@ -168,7 +171,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
           <span>₹{(calculateTotalPrice() + Math.floor(calculateTotalPrice() * 0.18)).toLocaleString()}</span>
         </div>
         
-        <p className="mt-4 text-sm text-gray-400">Payment method: Credit Card (xxxx-xxxx-xxxx-1234)</p>
+        <p className="mt-4 text-sm text-gray-400">Payment method: Credit Card (xxxx-xxxx-xxxx-{paymentDetails.cardNumber? paymentDetails.cardNumber.substring(paymentDetails.cardNumber.length-4): 'xxxx'})</p>
       </div>
       
       <div className="mt-6 text-center">

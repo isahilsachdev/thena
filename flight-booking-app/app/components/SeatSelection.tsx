@@ -130,7 +130,7 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
                     return (
                       <button
                         key={seat}
-                        className={`m-1 w-10 h-10 p-2 rounded text-center flex items-center justify-center ${
+                        className={`m-1 w-8 h-8 p-2 rounded text-center flex items-center justify-center ${
                           selectedSeats.return.includes(seat) ? "bg-blue-500" : "bg-gray-700"
                         } hover:opacity-[0.6] transition`}
                         onClick={() => handleSeatSelection("return", seat)}
@@ -145,7 +145,7 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
                     return (
                       <button
                         key={seat}
-                        className={`m-1 w-10 h-10 p-2 rounded text-center flex items-center justify-center ${
+                        className={`m-1 w-8 h-8 p-2 rounded text-center flex items-center justify-center ${
                           selectedSeats.return.includes(seat) ? "bg-blue-500" : "bg-gray-700"
                         } hover:opacity-[0.6] transition`}
                         onClick={() => handleSeatSelection("return", seat)}

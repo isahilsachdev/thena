@@ -58,7 +58,7 @@ const createPayment = async (req, res, next) => {
     const bookingPromises = validFlightIds.map((id) => {
       return supabase
         .from('bookings')
-        .insert([{ user_id: userId, flight_id: uuid, original_flight_id: id, booking_reference: id, passenger_name: req.user.user_metadata.name, price: amount }]);
+        .insert([{ user_id: userId, flight_id: uuid, original_flight_id: id, booking_reference: id, passenger_name: req.user.user_metadata.name || req.user.user_metadata.full_name, price: amount }]);
     });
 
     const bookingResults = await Promise.all(bookingPromises);

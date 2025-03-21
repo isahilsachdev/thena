@@ -94,7 +94,7 @@ const FlightList: React.FC<FlightListProps> = ({
                     selectedFlights.outbound?.id === outboundFlight.id && selectedFlights.return?.id === returnFlight.id 
                       ? 'border-blue-500' 
                       : 'border-transparent'
-                  } cursor-pointer hover:border-blue-400 transition`}
+                  } cursor-pointer transition`}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleFlightSelection(outboundFlight, "outbound");
@@ -136,7 +136,7 @@ const FlightList: React.FC<FlightListProps> = ({
                   </div>
                   
                   <button 
-                    className="mt-3 bg-[#2A2C2E] text-white px-4 py-1 rounded hover:bg-[#2A2C2E] transition"
+                    className="mt-3 bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleFlightSelection(outboundFlight, "outbound");
