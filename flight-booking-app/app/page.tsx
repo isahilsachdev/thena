@@ -133,7 +133,7 @@ export default function Home() {
       };
   
       // Generate empty seat selections for the number of passengers
-      const seats = Array(searchData.passengers).fill().map(() =>
+      const seats = Array(searchData.passengers).map(() =>
         String.fromCharCode(65 + Math.floor(Math.random() * 6)) + (1 + Math.floor(Math.random() * 30))
       );
   
@@ -146,8 +146,6 @@ export default function Home() {
       if (!searchData.isReturn || (updatedSelectedFlights.outbound && updatedSelectedFlights.return)) {
         setCurrentView("seatSelection");
       }
-
-      toast.success('Flight selected successfully!');
       return updatedSelectedFlights;
     });
   };

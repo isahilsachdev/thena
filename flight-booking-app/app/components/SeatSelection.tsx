@@ -1,4 +1,5 @@
-import React from "react";
+'use client';
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 
 interface Flight {
@@ -36,6 +37,10 @@ const SeatSelection: React.FC<SeatSelectionProps> = ({
   setCurrentView,
   searchData
 }) => {
+  useEffect(() => {
+    toast.success('Flight selected successfully!');
+  }, [])
+
   const handleSeatSelection = (type: "outbound" | "return", seat: string) => {
     setSelectedSeats((prevSelectedSeats) => {
       const seats = prevSelectedSeats[type].includes(seat)
