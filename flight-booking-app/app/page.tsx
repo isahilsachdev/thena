@@ -43,7 +43,7 @@ export default function Home() {
     }
   }, [router, token]);
   // State for different views
-  const [currentView, setCurrentView] = useState("confirmation"); // search, flights, seatSelection, passengerDetails, confirmation
+  const [currentView, setCurrentView] = useState("search"); // search, flights, seatSelection, passengerDetails, confirmation
 
   const [searchData, setSearchData] = useState({
     origin: "AGX",
