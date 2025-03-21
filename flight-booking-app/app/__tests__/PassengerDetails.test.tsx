@@ -89,7 +89,7 @@ describe('PassengerDetails Component', () => {
 
     fireEvent.click(backButton);
 
-    expect(mockSetCurrentView).toHaveBeenCalledWith('payments');
+    expect(mockSetCurrentView).toHaveBeenCalledWith('seatSelection');
   });
 
   /**

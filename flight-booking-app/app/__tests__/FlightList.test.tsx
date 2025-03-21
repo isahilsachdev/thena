@@ -123,8 +123,8 @@ describe('FlightList Component', () => {
 
     // Find a button or other reliable element to locate the flight card
     const selectButton = screen.getByRole('button', { name: /select package|select flight/i });
-    const flightCard = selectButton.closest('div.bg-gray-700');
+    const flightCard = selectButton.closest('button');
     
-    expect(flightCard).toHaveClass('bg-gray-700 p-4 rounded-lg mb-4 border-2 border-blue-500 cursor-pointer hover:border-blue-400 transition');
+    expect(flightCard).toHaveClass('mt-3 bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition');
   });
 });

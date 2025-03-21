@@ -145,7 +145,7 @@ const FlightList: React.FC<FlightListProps> = ({
                   </div>
                   
                   <button 
-                    className="mt-3 bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition"
+                    className="btn-class mt-3 bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleFlightSelection(outboundFlight, "outbound");
