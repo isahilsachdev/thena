@@ -5,8 +5,11 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const { errorHandler } = require('./middleware/errorHandler');
 const routes = require('./routes');
+const { swaggerUi, swaggerDocs } = require('../swagger');
 
 const app = express();
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Middleware
 app.use(helmet());
