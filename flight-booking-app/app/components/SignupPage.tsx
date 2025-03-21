@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { registerUser } from "../api";
-import { useAppContext } from "../AppContext"; // Import useAppContext
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useAppContext } from "../AppContext";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const SignupPage = () => {
@@ -13,8 +13,10 @@ const SignupPage = () => {
     password: "",
   });
 
-  const router = useRouter(); // Initialize router
-  const { setToken } = useAppContext(); // Get setToken from context
+  const [sessionToken, setSessionToken] = useState<string | null>(null); // Store token in state
+
+  const router = useRouter();
+  const { setToken } = useAppContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,16 +26,24 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       const response = await registerUser(formData);
-      const { session } = response.data; // Get session token from response
-      localStorage.setItem('token', session); // Save token in local storage
-      setToken(session); // Update context with token
-      toast.success('Signup successful!');
-      router.push('/'); // Redirect to homepage
+      const { session } = response.data;
+      setSessionToken(session); // Set token in state
+      setToken(session);
+      toast.success("Signup successful!");
+      router.push("/");
     } catch (err: any) {
-      toast.error(err.response.data.message || 'Something went wrong, Please try again!');
-      console.error(err.response.data.message);
+      toast.error(err.response?.data?.message || "Something went wrong, Please try again!");
+      console.error(err.response?.data?.message);
     }
   };
+
+  useEffect(() => {
+    if (sessionToken) {
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", sessionToken); // Access localStorage on client-side
+      }
+    }
+  }, [sessionToken]);
 
   return (
     <div className="min-h-screen p-8 pb-20 flex flex-col items-center gap-8 bg-[#1B1D1E] text-white">
@@ -81,6 +91,6 @@ const SignupPage = () => {
       </form>
     </div>
   );
-}
+};
 
-export default SignupPage
+export default SignupPage;

@@ -54,8 +54,11 @@ const UserDetails = () => {
       setError('Failed to cancel booking');
     }
   }
-  if (loading) return <div className="text-center text-white">Loading...</div>;
-
+  if (loading) return (
+    <div className="flex justify-center items-center h-screen bg-[#1B1D1E]">
+      <div className="w-12 h-12 border-4 border-gray-300 border-t-white rounded-full animate-spin"></div>
+    </div>
+  );  
   return (
     <div className="max-w-4xl mx-auto">
       {/* User Info Card */}
@@ -75,7 +78,7 @@ const UserDetails = () => {
           <ul className="space-y-4">
             {userDetails.flights.map((flight: { id: string; flight_number: string; origin: string; destination: string; departure_date: string; arrival_date: string; airline: string }) => (
               <div>
-                <li key={flight.id} className="bg-gray-700 p-4 rounded-lg shadow">
+                <li key={flight.id} className="border-[1px] border-gray-500 p-4 rounded-lg shadow">
                   <p><span className="font-bold">Flight Number:</span> {flight.flight_number}</p>
                   <p><span className="font-bold">Airline:</span> {flight.airline}</p>
                   <p><span className="font-bold">Origin:</span> {flight.origin}</p>
@@ -85,7 +88,7 @@ const UserDetails = () => {
                   <button
                     type="button"
                     onClick={() => handleCancelBooking(flight.id)}
-                    className="px-4 py-2 bg-red-400 rounded hover:bg-gray-700 transition mt-2"
+                    className="px-4 py-2 bg-red-400 rounded hover:opacity[0.4] transition mt-2"
                   >
                     Cancel Booking
                   </button>

@@ -29,7 +29,9 @@ const Header: React.FC = () => {
    * Removes token from localStorage, updates context state, and redirects to login page.
    */
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token from local storage
+    if (typeof window !== "undefined") {
+      localStorage.removeItem('token'); // Remove token from local storage
+    }
     setToken(null); // Update context state
     router.push('/login'); // Redirect to login page
   };
@@ -39,7 +41,7 @@ const Header: React.FC = () => {
       <h1 className="text-xl">Flight Booking</h1>
       <nav>
         <a href="/user-details" className="mr-4">User Details</a>
-        <button onClick={handleLogout} className="bg-red-500 p-2 rounded">Logout</button>
+        <button onClick={handleLogout} className="bg-red-400 rounded hover:opacity[0.4] p-2">Logout</button>
       </nav>
     </header>
   );

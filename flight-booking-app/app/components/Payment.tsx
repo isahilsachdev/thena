@@ -3,7 +3,7 @@ import { processPayment } from '../api';
 import { toast } from 'react-toastify';
 
 type Flight = {
-  id: string;
+  id?: string;
   airline: string;
   flightNumber: string;
   departureTime: string;

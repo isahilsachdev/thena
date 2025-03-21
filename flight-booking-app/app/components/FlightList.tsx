@@ -1,14 +1,14 @@
 import React from 'react';
 
 type Flight = {
-  id: string;
+  id?: string;
   airline: string;
   flightNumber: string;
   departureTime: string;
   arrivalTime: string;
   duration: string;
   price: number;
-  availableSeats: number;
+  availableSeats?: number;
 };
 
 type SelectedFlights = {

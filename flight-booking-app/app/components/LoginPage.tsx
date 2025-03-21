@@ -8,7 +8,9 @@ import { toast } from "react-toastify";
 
 const LoginPage = () => {
   useEffect(() => {
-    localStorage.removeItem('token'); // Remove token from local storage
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token"); // Remove token from local storage
+    }
   }, []);
 
   const [formData, setFormData] = useState({
@@ -20,22 +22,25 @@ const LoginPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const { setToken } = useAppContext(); // Get setToken from context
-  const router = useRouter(); // Initialize router
+  const { setToken } = useAppContext();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await loginUser(formData);
-      const { session } = response.data; // Get session token from response
-      localStorage.setItem('token', session); // Save token in local storage
-      console.log('first', session);
-      setToken(session); // Update context with token
-      toast.success('Login successful!');
-      router.push('/'); // Redirect to homepage
+      const { session } = response.data;
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem("token", session); // Store token only on client-side
+      }
+
+      setToken(session);
+      toast.success("Login successful!");
+      router.push("/");
     } catch (err: any) {
-      toast.error(err.response.data.message || 'Something went wrong, Please try again!');
-      console.error(err.response.data.message);
+      toast.error(err.response?.data?.message || "Something went wrong, Please try again!");
+      console.error(err.response?.data?.message);
     }
   };
 
@@ -74,6 +79,6 @@ const LoginPage = () => {
       </form>
     </div>
   );
-}
+};
 
-export default LoginPage
+export default LoginPage;
