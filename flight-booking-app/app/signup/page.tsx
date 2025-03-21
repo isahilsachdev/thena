@@ -72,7 +72,7 @@ export default function Signup() {
             required
           />
         </div>
-        <button type="submit" className="bg-[#2A2C2E] p-2 rounded text-white hover:bg-[#2A2C2E] transition">
+        <button type="submit" className="bg-[#1B1D1E] p-2 rounded text-white hover:opacity-[0.8] transition">
           Signup
         </button>
         <p>

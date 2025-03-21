@@ -48,7 +48,7 @@ const getProfile = async (req, res, next) => {
         profile: {
           id: userData.user.id,
           email: userData.user.email,
-          name: userData.user.user_metadata.name,
+          name: userData.user.user_metadata.name || userData.user.user_metadata.full_name,
           created_at: userData.user.created_at,
           flights: flightsData, // Include booked flights
         },
