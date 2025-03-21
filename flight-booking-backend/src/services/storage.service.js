@@ -1,5 +1,5 @@
 // src/services/storage.service.js
-const supabase = require('../config/supabase');
+const supabase = require('../../src/config/supabase');
 const { AppError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 
