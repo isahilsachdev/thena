@@ -918,3 +918,5 @@
 {"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T12:01:53.342Z"}
 {"level":"error","message":"401 - Invalid token or session expired - /api//users/profile - GET - ::1","service":"flight-tracker-api","timestamp":"2025-03-21T12:02:01.520Z"}
 {"level":"error","message":"Error: Invalid token or session expired\n    at protect (/Users/sahilsachdev/Desktop/random/Thena/flight-booking-backend/src/middleware/auth.middleware.js:22:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","service":"flight-tracker-api","timestamp":"2025-03-21T12:02:01.521Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T12:05:32.586Z"}
+{"level":"info","message":"Server running on port 3001","service":"flight-tracker-api","timestamp":"2025-03-21T12:05:53.218Z"}
