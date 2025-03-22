@@ -71,7 +71,7 @@ const FlightList: React.FC<FlightListProps> = ({
               >
                 <div className="flex justify-between items-center mb-2">
                   <h3 className="font-bold">{outboundFlight.airline} ({outboundFlight.flightNumber})</h3>
-                  <span className="text-xl font-bold">₹{outboundFlight.price.toLocaleString()}</span>
+                  <span className="text-xl font-bold">${outboundFlight.price.toLocaleString()}</span>
                 </div>
                 
                 <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ const FlightList: React.FC<FlightListProps> = ({
                   <div className="mb-4">
                     <h3 className="font-bold">Outbound Flight: {outboundFlight.airline} ({outboundFlight.flightNumber})</h3>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-xl font-bold">₹{outboundFlight.price.toLocaleString()}</span>
+                      <span className="text-xl font-bold">${outboundFlight.price.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <div>
@@ -130,7 +130,7 @@ const FlightList: React.FC<FlightListProps> = ({
                   <div>
                     <h3 className="font-bold">Return Flight: {returnFlight.airline} ({returnFlight.flightNumber})</h3>
                     <div className="flex justify-between mb-1">
-                      <span className="text-xl font-bold">₹{returnFlight.price.toLocaleString()}</span>
+                      <span className="text-xl font-bold">${returnFlight.price.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <div>

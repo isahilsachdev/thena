@@ -91,7 +91,7 @@ describe('Confirmation Component', () => {
 
     const totalPaid = screen.getByText(/total paid/i);
     expect(totalPaid).toBeInTheDocument();
-    expect(screen.getByText('₹5,900')).toBeInTheDocument(); // ₹5000 + 18% tax
+    expect(screen.getByText('$5,900')).toBeInTheDocument(); // $5000 + 18% tax
   });
 
   /**

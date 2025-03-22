@@ -79,7 +79,7 @@ const Confirmation: React.FC<ConfirmationProps> = ({
         <div className='border border-[1px] border-gray-500 shadow-lg rounded w-fit p-4'>
           <p>Payment Method: Credit Card</p>
           <p>Card Number: **** **** **** {paymentDetails?.cardNumber?.slice(-4)}</p>
-          <p>Amount: ₹{paymentDetails?.amount?.toLocaleString()}</p>
+          <p>Amount: ${paymentDetails?.amount?.toLocaleString()}</p>
         </div>
         <h3 className="text-xl font-semibold my-4">Flight Details</h3>
         
@@ -157,26 +157,26 @@ const Confirmation: React.FC<ConfirmationProps> = ({
         
         <div className="flex justify-between mb-2">
           <span>Outbound Flight ({searchData.passengers} passenger{searchData.passengers > 1 ? 's' : ''})</span>
-          <span>₹{(selectedFlights.outbound.price * searchData.passengers).toLocaleString()}</span>
+          <span>${(selectedFlights.outbound.price * searchData.passengers).toLocaleString()}</span>
         </div>
         
         {selectedFlights.return && (
           <div className="flex justify-between mb-2">
             <span>Return Flight ({searchData.passengers} passenger{searchData.passengers > 1 ? 's' : ''})</span>
-            <span>₹{(selectedFlights.return.price * searchData.passengers).toLocaleString()}</span>
+            <span>${(selectedFlights.return.price * searchData.passengers).toLocaleString()}</span>
           </div>
         )}
         
         <div className="flex justify-between mb-2">
           <span>Taxes & Fees</span>
-          <span>₹{Math.floor(calculateTotalPrice() * 0.18).toLocaleString()}</span>
+          <span>${Math.floor(calculateTotalPrice() * 0.18).toLocaleString()}</span>
         </div>
         
         <div className="border-t border-gray-600 my-3"></div>
         
         <div className="flex justify-between text-xl font-bold">
           <span>Total Paid</span>
-          <span>₹{(calculateTotalPrice() + Math.floor(calculateTotalPrice() * 0.18)).toLocaleString()}</span>
+          <span>${(calculateTotalPrice() + Math.floor(calculateTotalPrice() * 0.18)).toLocaleString()}</span>
         </div>
         
         <p className="mt-4 text-sm text-gray-400">Payment method: Credit Card (xxxx-xxxx-xxxx-{paymentDetails.cardNumber? paymentDetails.cardNumber.substring(paymentDetails.cardNumber.length-4): 'xxxx'})</p>

@@ -149,7 +149,7 @@ const PassengerDetails: React.FC<PassengerDetailsProps> = ({
           </button>
 
           <div className="text-xl">
-            Total: ₹<span className="font-bold">{calculateTotalPrice().toLocaleString()}</span>
+            Total: $<span className="font-bold">{calculateTotalPrice().toLocaleString()}</span>
           </div>
 
           <button

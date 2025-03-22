@@ -46,10 +46,10 @@ export default function Home() {
   const [currentView, setCurrentView] = useState("search"); // search, flights, seatSelection, passengerDetails, confirmation
 
   const [searchData, setSearchData] = useState({
-    origin: "AGX",
-    destination: "AMD",
-    departureDate: "2025-03-27",
-    returnDate: "2025-05-29",
+    origin: "",
+    destination: "",
+    departureDate: "",
+    returnDate: "",
     isReturn: false,
     passengers: 2,
     cabinClass: "Economy",
