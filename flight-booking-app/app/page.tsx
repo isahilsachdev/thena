@@ -46,12 +46,12 @@ export default function Home() {
   const [currentView, setCurrentView] = useState("search"); // search, flights, seatSelection, passengerDetails, confirmation
 
   const [searchData, setSearchData] = useState({
-    origin: "",
-    destination: "",
-    departureDate: "",
-    returnDate: "",
+    origin: "AGX",
+    destination: "AMD",
+    departureDate: "2025-03-27",
+    returnDate: "2025-05-29",
     isReturn: false,
-    passengers: 1,
+    passengers: 2,
     cabinClass: "Economy",
   });
   
@@ -124,18 +124,18 @@ export default function Home() {
   };
   
   // Handle flight selection
-  const handleFlightSelection = (flight: 'string', type: 'string') => {
+  const handleFlightSelection = (flight: Flight, type: 'outbound' | 'return') => {
     setSelectedFlights((prevSelectedFlights: SelectedFlights) => {
       const updatedSelectedFlights = {
         ...prevSelectedFlights,
         [type]: flight,
       };
   
-      // Generate empty seat selections for the number of passengers
-      const seats = Array(searchData.passengers).map(() =>
+      // Generate random seat selections for the number of passengers
+      const seats = Array.from({ length: searchData.passengers }, () =>
         String.fromCharCode(65 + Math.floor(Math.random() * 6)) + (1 + Math.floor(Math.random() * 30))
       );
-  
+      
       setSelectedSeats((prevSelectedSeats) => ({
         ...prevSelectedSeats,
         [type]: seats,
@@ -145,10 +145,11 @@ export default function Home() {
       if (!searchData.isReturn || (updatedSelectedFlights.outbound && updatedSelectedFlights.return)) {
         setCurrentView("seatSelection");
       }
+  
       return updatedSelectedFlights;
     });
   };
-  
+
   // Handle passenger details form change
   const handlePassengerChange = (index: number, field: string, value: string) => {
     const updatedPassengers = [...passengers];

@@ -70,8 +70,6 @@ const createPayment = async (req, res, next) => {
       return res.status(500).json({ message: 'Error creating some bookings', errors: bookingErrors });
     }
 
-    console.log('Bookings Created:', bookingResults);
-
     res.status(201).json({
       message: 'Payment and bookings created successfully',
       payment: { amount, cardNumber, flightId: primaryFlightId },

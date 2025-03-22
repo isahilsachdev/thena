@@ -67,8 +67,6 @@ const Confirmation: React.FC<ConfirmationProps> = ({
   calculateTotalPrice,
   handleNewSearch,
 }) => {
-  console.log('paymentDetails', paymentDetails)
-
   return (
     <div className="w-full max-w-2xl">
       <div className="bg-green-700 p-4 rounded-lg mb-6 text-center">
