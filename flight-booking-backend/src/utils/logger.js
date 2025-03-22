@@ -1,5 +1,13 @@
-// src/utils/logger.js
+const fs = require('fs');
+const path = require('path');
 const winston = require('winston');
+
+const logDir = process.env.VERCEL ? '/tmp' : 'logs'; // Use /tmp in Vercel
+
+// Ensure log directory exists (only for local environment)
+if (!process.env.VERCEL && !fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
 
 const logger = winston.createLogger({
   level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
@@ -17,8 +25,13 @@ const logger = winston.createLogger({
         winston.format.simple()
       )
     }),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/combined.log' })
+    // Only log to files if not running in Vercel
+    ...(process.env.VERCEL
+      ? []
+      : [
+          new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'error' }),
+          new winston.transports.File({ filename: path.join(logDir, 'combined.log') })
+        ])
   ]
 });
 

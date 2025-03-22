@@ -11,7 +11,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3001', // Update with your server URL
+                url: 'https://thenaassignmentbackend.vercel.app/', // Update with your server URL
             },
         ],
     },
