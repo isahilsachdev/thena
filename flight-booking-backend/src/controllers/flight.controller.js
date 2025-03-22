@@ -71,24 +71,24 @@ const getFlights = async (req, res, next) => {
         }
     });
     // // Save generated flights to the database
-    // const { data: savedFlights, error: saveError } = await supabase
-    //   .from('flights')
-    //   .insert(
-    //     flights.map((a) => ({
-    //       id: uuidv4(),
-    //       flight_number: a.flightNumber,
-    //       origin: a.origin,
-    //       destination: a.destination,
-    //       departure_date: new Date(`${a.date} ${a.departureTime}`).toISOString(), // Combine date and time
-    //       arrival_date: new Date(`${a.date} ${a.arrivalTime}`).toISOString(), // Combine date and time
-    //       airline: a.airline,
-    //     }))
-    //   )
-    //   .select();
+    const { data: savedFlights, error: saveError } = await supabase
+      .from('flights')
+      .insert(
+        flights.map((a) => ({
+          id: uuidv4(),
+          flight_number: a.flightNumber,
+          origin: a.origin,
+          destination: a.destination,
+          departure_date: new Date(`${a.date} ${a.departureTime}`).toISOString(), // Combine date and time
+          arrival_date: new Date(`${a.date} ${a.arrivalTime}`).toISOString(), // Combine date and time
+          airline: a.airline,
+        }))
+      )
+      .select();
 
-    // if (saveError) {
-    //   return next(new AppError(saveError.message, 400));
-    // }
+    if (saveError) {
+      return next(new AppError(saveError.message, 400));
+    }
     
     res.status(200).json({
       status: 'success',
